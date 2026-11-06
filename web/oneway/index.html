@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="One Way — Central NJ airport rides. Reserve ahead with the fare shown." />
+  <title>One Way · Airport rides · Central NJ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="img/favicon.ico?v=20261105b" sizes="any" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png?v=20261105b" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png?v=20261105b" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png?v=20261105b" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png?v=20261105b" />
+  <meta property="og:title" content="One Way · Airport rides · Central NJ" />
+  <meta property="og:description" content="One Way — Central NJ airport rides. Reserve ahead with the fare shown." />
+  <meta property="og:image" content="https://robotkitchen.us/demo/web/oneway/img/og-image.png?v=20261105b" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://robotkitchen.us/demo/web/oneway/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Robot Kitchen" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="One Way · Airport rides · Central NJ" />
+  <meta name="twitter:description" content="One Way — Central NJ airport rides. Reserve ahead with the fare shown." />
+  <meta name="twitter:image" content="https://robotkitchen.us/demo/web/oneway/img/og-image.png?v=20261105b" />
+  <link rel="preload" as="image" href="img/marble.jpg?v=20261105b" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="css/app.css?v=20261105b" />
+</head>
+<body>
+
+  <div class="app-shell" id="app">
+    <header class="topbar">
+      <a class="logo" href="#home" aria-label="One Way">
+        <img src="img/mark.png?v=20261105b" width="40" height="40" alt="" />
+        <span>
+          <div class="brand-name">ONE WAY</div>
+          <div class="brand-sub" data-i18n="brandSub"></div>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <div class="lang-toggle" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="zh">中文</button></div>
+        <a class="chip-link" href="driver/" data-i18n="toDriver"></a>
+      </div>
+    </header>
+
+    <section class="screen active" id="screen-home" data-screen="home">
+      <div class="hero-home">
+        <span class="full-logo ow-hero" role="img" aria-label="One Way · Airport Rides"><img class="ow-car" src="img/car.png?v=20261105b" width="1157" height="546" alt="" /><img class="ow-word" src="img/wordmark.png?v=20261105b" alt="" /></span>
+        <h1 class="gold-text" data-i18n="heroTitle"></h1>
+        <p data-i18n="heroSub"></p>
+      </div>
+      <div class="panel book-home" id="book-panel">
+        <div id="book-scroll">
+          <div class="field">
+            <label for="mode-select" data-i18n="tripType"></label>
+            <select id="mode-select">
+              <option value="" data-i18n="tripTypePh"></option>
+              <option value="to_airport" data-i18n="dropTitle"></option>
+              <option value="from_airport" data-i18n="pickTitle"></option>
+              <option value="other" data-i18n="otherTitle"></option>
+            </select>
+          </div>
+          <div id="book-fields" class="hidden">
+            <div class="field" id="airport-field">
+              <label for="airport-select" data-i18n="airportLabel"></label>
+              <select id="airport-select"></select>
+            </div>
+            <div class="field" id="field-pickup">
+              <label id="label-a" for="input-pickup"></label>
+              <input id="input-pickup" type="text" data-i18n-ph="placePh" autocomplete="off" />
+            </div>
+            <div class="field" id="field-dropoff">
+              <label id="label-b" for="input-dropoff"></label>
+              <input id="input-dropoff" type="text" data-i18n-ph="placePh" autocomplete="off" />
+            </div>
+            <div class="field" id="flight-field">
+              <label for="flight-number" data-i18n="flightNumber"></label>
+              <input id="flight-number" type="text" data-i18n-ph="flightPh" autocomplete="off" maxlength="12" />
+            </div>
+            <div class="compact-row">
+              <div class="field">
+                <label for="pax-select" data-i18n="passengers"></label>
+                <select id="pax-select"></select>
+              </div>
+              <div class="field">
+                <label for="bags-select" data-i18n="bagsLabel"></label>
+                <select id="bags-select"></select>
+              </div>
+            </div>
+            <div class="pax-note" id="pax-note"></div>
+            <div class="pax-note" id="lug-note"></div>
+            <div class="pax-note warn hidden" id="lug-warn"></div>
+            <div class="field" id="when-field">
+              <label for="pickup-time" data-i18n="whenLabel"></label>
+              <input id="pickup-time" type="datetime-local" step="300" aria-label="Pickup time" />
+              <div class="pax-note" data-i18n="leadNote"></div>
+            </div>
+            <div class="field">
+              <label for="rider-name" data-i18n="riderName"></label>
+              <input id="rider-name" type="text" autocomplete="name" maxlength="60" data-i18n-ph="riderNamePh" />
+            </div>
+            <div class="field">
+              <label for="rider-phone" data-i18n="riderPhone"></label>
+              <input id="rider-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" data-i18n-ph="riderPhonePh" />
+            </div>
+            <div class="welcome-back" id="welcome-back" hidden></div>
+            <div class="field">
+              <label for="rider-email" data-i18n="riderEmailOpt"></label>
+              <input id="rider-email" type="email" autocomplete="email" inputmode="email" maxlength="254" data-i18n-ph="riderEmailPh" />
+            </div>
+            <div class="map-wrap map-compact" id="map-book-wrap"><div id="map-book" style="height:100%"></div></div>
+            <div id="fare-area"></div>
+            <label class="agree-row"><input type="checkbox" id="agree-terms" /> <span><span data-i18n="agreePre"></span> <a href="terms/" target="_blank" rel="noopener" data-i18n="termsLink"></a></span></label>
+            <button type="button" class="btn btn-primary" id="btn-request" disabled data-i18n="submitRequest"></button>
+          </div>
+        </div>
+      </div>
+      <aside class="a2hs-tip" id="a2hs-demo" aria-label="Add to Home Screen tip">
+        <p class="a2hs-hint" data-i18n="a2hsHint"></p>
+        <!-- A2HS phone mock kept for later redo; hidden this deploy -->
+        <div class="a2hs-stage" hidden aria-hidden="true">
+          <div class="a2hs-phone">
+            <div class="a2hs-screen">
+              <!-- Phase 1: Safari chrome -->
+              <div class="a2hs-scene a2hs-s1">
+                <div class="a2hs-page">
+                  <div class="a2hs-page-top">ONE WAY</div>
+                  <div class="a2hs-page-sub">Airport rides</div>
+                </div>
+                <div class="a2hs-safari-bar">
+                  <button class="a2hs-aa" type="button" aria-hidden="true">AA</button>
+                  <div class="a2hs-url-pill">
+                    <span class="a2hs-page-menu" title="Page menu">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 7h14M5 12h14M5 17h10"/></svg>
+                    </span>
+                    <span class="a2hs-lock">🔒</span>
+                    <span class="a2hs-url">robotkitchen.us</span>
+                  </div>
+                  <span class="a2hs-reload">↻</span>
+                </div>
+              </div>
+              <!-- Phase 2: page menu -->
+              <div class="a2hs-scene a2hs-s2">
+                <div class="a2hs-menu">
+                  <div class="a2hs-menu-item" data-i18n="a2hsMenuTranslate">Translate</div>
+                  <div class="a2hs-menu-item a2hs-hl" data-i18n="a2hsMenuShare">Share</div>
+                  <div class="a2hs-menu-item" data-i18n="a2hsMenuBookmark">Add to Bookmarks</div>
+                </div>
+              </div>
+              <!-- Phase 3: share sheet -->
+              <div class="a2hs-scene a2hs-s3">
+                <div class="a2hs-sheet">
+                  <div class="a2hs-sheet-handle"></div>
+                  <div class="a2hs-sheet-item a2hs-hl">
+                    <span class="a2hs-plus" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>
+                    </span>
+                    <span data-i18n="a2hsAddHome">Add to Home Screen</span>
+                  </div>
+                  <div class="a2hs-sheet-item muted" data-i18n="a2hsMenuBookmark">Add to Bookmarks</div>
+                </div>
+              </div>
+              <!-- Phase 4: home screen -->
+              <div class="a2hs-scene a2hs-s4">
+                <div class="a2hs-home">
+                  <div class="a2hs-home-grid">
+                    <div class="a2hs-app ghost"></div>
+                    <div class="a2hs-app ghost"></div>
+                    <div class="a2hs-app ghost"></div>
+                    <div class="a2hs-app ghost"></div>
+                    <div class="a2hs-app a2hs-app-ow">
+                      <img src="img/apple-touch-icon.png" alt="" width="48" height="48" />
+                      <span>One Way</span>
+                    </div>
+                  </div>
+                  <div class="a2hs-dock"></div>
+                </div>
+              </div>
+              <div class="a2hs-finger"><span class="a2hs-ripple"></span></div>
+            </div>
+          </div>
+          <ol class="a2hs-captions">
+            <li class="a2hs-cap a2hs-cap1" data-i18n="a2hsStep1">① Tap the icon left of the address</li>
+            <li class="a2hs-cap a2hs-cap2" data-i18n="a2hsStep2">② Tap Share</li>
+            <li class="a2hs-cap a2hs-cap3" data-i18n="a2hsStep3">③ Tap Add to Home Screen</li>
+          </ol>
+        </div>
+      </aside>
+      <p class="footer-note cs-contact" data-i18n="csContact"></p>
+      <p class="footer-note"><span data-i18n="footerAirports"></span><br /><a href="terms/" data-i18n="termsLink"></a> · <a href="https://robotkitchen.us">robotkitchen.us</a></p>
+    </section>
+
+    <section class="screen" id="screen-book" data-screen="book" hidden aria-hidden="true"></section>
+
+    <section class="screen" id="screen-booked" data-screen="booked">
+      <div class="receipt">
+        <h2 class="gold-text" data-i18n="bookedTitle"></h2>
+        <div class="rid" id="booked-id">—</div>
+        <div id="booked-rows"></div>
+        <p class="pax-note" data-i18n="bookedNote"></p>
+        <p class="footer-note cs-contact" data-i18n="csContact"></p>
+        <p style="margin:8px 0 0"><a class="btn btn-primary" id="booked-receipt" href="#" data-i18n="statusLink"></a></p>
+        <div style="margin-top:12px" class="btn-row">
+          <button type="button" class="btn btn-secondary" id="btn-booked-home" data-i18n="newRide"></button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/app.js?v=20261106lang" type="module"></script>
+</body>
+</html>

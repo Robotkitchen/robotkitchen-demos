@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=720, initial-scale=1" />
+<title>One Way · A2HS</title>
+<link rel="stylesheet" href="css/app.css" />
+<style>
+  html,body{margin:0;background:#050505;color:#f4efe6;font-family:system-ui,-apple-system,sans-serif}
+  .reel{width:720px;height:1280px;margin:0 auto;position:relative;overflow:hidden;background:#050505}
+  .brand-top{padding:48px 40px 12px;text-align:center}
+  .brand-top .ow{font-size:28px;letter-spacing:.18em;font-weight:700;background:linear-gradient(135deg,#7a5b17,#e6cc7a,#a8822a);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .brand-top .sub{margin-top:6px;font-size:14px;letter-spacing:.2em;color:#c9a23f;text-transform:uppercase}
+  .stage-wrap{display:flex;justify-content:center;padding:12px 24px 0}
+  .a2hs-demo{width:560px;margin:0;transform:scale(1.55);transform-origin:top center}
+  .a2hs-phone{width:240px;height:280px}
+  .endcard{position:absolute;inset:0;display:grid;place-content:center;text-align:center;background:radial-gradient(80% 60% at 50% 40%,#1a1408,#050505 70%);opacity:0;pointer-events:none}
+  .endcard.show{opacity:1}
+  .endcard h1{font-size:42px;letter-spacing:.16em;margin:0 0 12px;background:linear-gradient(135deg,#7a5b17,#e6cc7a,#a8822a);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .endcard p{margin:0;font-size:20px;color:#f1e2b4}
+  .endcard .url{margin-top:18px;font-size:18px;color:#c9a23f}
+</style>
+</head>
+<body>
+  <div class="reel" id="reel">
+    <div class="brand-top"><div class="ow">ONE WAY</div><div class="sub">Airport rides</div></div>
+    <div class="stage-wrap">
+      <aside class="a2hs-demo" id="a2hs-demo">
+        <p class="a2hs-hint">小提示：iPhone 可點「分享」→「加入主畫面」，之後一鍵開啟預約。</p>
+        <div class="a2hs-stage" aria-hidden="true">
+          <div class="a2hs-phone"><div class="a2hs-screen">
+            <div class="a2hs-scene a2hs-s1">
+              <div class="a2hs-page"><div class="a2hs-page-top">ONE WAY</div><div class="a2hs-page-sub">Airport rides</div></div>
+              <div class="a2hs-safari-bar">
+                <button class="a2hs-aa" type="button">AA</button>
+                <div class="a2hs-url-pill">
+                  <span class="a2hs-page-menu"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 7h14M5 12h14M5 17h10"/></svg></span>
+                  <span class="a2hs-lock">🔒</span><span class="a2hs-url">robotkitchen.us</span>
+                </div>
+                <span class="a2hs-reload">↻</span>
+              </div>
+            </div>
+            <div class="a2hs-scene a2hs-s2">
+              <div class="a2hs-menu">
+                <div class="a2hs-menu-item">翻譯</div>
+                <div class="a2hs-menu-item a2hs-hl">分享</div>
+                <div class="a2hs-menu-item">加入書籤</div>
+              </div>
+            </div>
+            <div class="a2hs-scene a2hs-s3">
+              <div class="a2hs-sheet">
+                <div class="a2hs-sheet-handle"></div>
+                <div class="a2hs-sheet-item a2hs-hl"><span class="a2hs-plus"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg></span><span>加入主畫面</span></div>
+                <div class="a2hs-sheet-item muted">加入書籤</div>
+              </div>
+            </div>
+            <div class="a2hs-scene a2hs-s4">
+              <div class="a2hs-home">
+                <div class="a2hs-home-grid">
+                  <div class="a2hs-app ghost"></div><div class="a2hs-app ghost"></div><div class="a2hs-app ghost"></div><div class="a2hs-app ghost"></div>
+                  <div class="a2hs-app a2hs-app-ow"><img src="img/apple-touch-icon.png" alt="" width="48" height="48" /><span>One Way</span></div>
+                </div>
+                <div class="a2hs-dock"></div>
+              </div>
+            </div>
+            <div class="a2hs-finger"><span class="a2hs-ripple"></span></div>
+          </div></div>
+          <ol class="a2hs-captions">
+            <li class="a2hs-cap a2hs-cap1">①點網址列左邊圖示</li>
+            <li class="a2hs-cap a2hs-cap2">②點「分享」</li>
+            <li class="a2hs-cap a2hs-cap3">③點「加入主畫面」</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+    <div class="endcard" id="endcard"><h1>ONE WAY</h1><p>機場接送 · 一鍵預約</p><div class="url">robotkitchen.us</div></div>
+  </div>
+</body>
+</html>

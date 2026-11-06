@@ -1,0 +1,390 @@
+[
+  {
+    "key": "crimson-veil",
+    "license": "Unsplash License",
+    "artist": "Tarah Dane",
+    "page": "https://unsplash.com/photos/gp47f3nMHck",
+    "source": "Unsplash",
+    "file": "unsplash-red-betta",
+    "shows": "Red betta fish",
+    "attribution_required": false
+  },
+  {
+    "key": "violet-emperor",
+    "license": "Pexels License",
+    "artist": "Tim Mossholder",
+    "page": "https://www.pexels.com/photo/942295/",
+    "source": "Pexels",
+    "file": "942295",
+    "shows": "Purple/blue betta",
+    "attribution_required": false
+  },
+  {
+    "key": "teal-dragon",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Male_Betta_-34245661920.jpg",
+    "license": "CC0",
+    "artist": "ivabalk https://pixabay.com/pt/users/ivabalk-782511/",
+    "page": "https://commons.wikimedia.org/wiki/File:Male_Betta_-34245661920.jpg",
+    "file": "Male Betta -34245661920.jpg",
+    "source": "Wikimedia Commons",
+    "shows": "Male betta (CC0)",
+    "attribution_required": false
+  },
+  {
+    "key": "amber-crown",
+    "license": "Pexels License",
+    "artist": "Himal Amarasinghe",
+    "page": "https://www.pexels.com/photo/34216404/",
+    "source": "Pexels",
+    "file": "34216404",
+    "shows": "Colorful betta",
+    "attribution_required": false
+  },
+  {
+    "key": "pearl-ghost",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Betta_splendens_male_with_bubble_nest.jpg/1920px-Betta_splendens_male_with_bubble_nest.jpg",
+    "license": "Public domain",
+    "artist": "ErgoSum88",
+    "page": "https://commons.wikimedia.org/wiki/File:Betta_splendens_male_with_bubble_nest.jpg",
+    "file": "Betta splendens male with bubble nest.jpg",
+    "source": "Wikimedia Commons",
+    "shows": "Betta with bubble nest",
+    "attribution_required": false
+  },
+  {
+    "key": "galaxy-koi",
+    "license": "Pexels License",
+    "artist": "Jeffry Surianto",
+    "page": "https://www.pexels.com/photo/37866566/",
+    "source": "Pexels",
+    "file": "37866566",
+    "shows": "Colorful betta portrait",
+    "attribution_required": false
+  },
+  {
+    "key": "hero",
+    "license": "Unsplash License",
+    "artist": "Tarah Dane",
+    "page": "https://unsplash.com/photos/gp47f3nMHck",
+    "source": "Unsplash",
+    "file": "hero",
+    "shows": "Betta hero",
+    "attribution_required": false
+  },
+  {
+    "key": "palace-pellets",
+    "page": "(Openverse CC0/PDM pet-food pellets close-up)",
+    "shows": "Dry pellets close-up (food pellets stand-in)",
+    "source": "Openverse",
+    "license": "cc0/pdm",
+    "attribution_required": false,
+    "file": "dragon-pellets__0.jpg",
+    "url": "(Openverse CC0/PDM pet-food pellets close-up)"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Single_Bloodworm.jpg",
+    "license": "CC0",
+    "artist": "Bill Kasman",
+    "page": "https://commons.wikimedia.org/wiki/File:Single_Bloodworm.jpg",
+    "file": "Single Bloodworm.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "frozen-bloodworms",
+    "shows": "Bloodworm"
+  },
+  {
+    "key": "dragon-pellets",
+    "page": "(Openverse CC0/PDM pet-food pellets close-up)",
+    "shows": "Dry pellets close-up",
+    "source": "Openverse",
+    "license": "cc0/pdm",
+    "attribution_required": false,
+    "file": "dragon-pellets__0.jpg",
+    "url": "(Openverse CC0/PDM pet-food pellets close-up)"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty_aquarium.jpg",
+    "license": "CC0",
+    "artist": "Andrzej 22",
+    "page": "https://commons.wikimedia.org/wiki/File:Empty_aquarium.jpg",
+    "file": "Empty aquarium.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "nano-palace-5",
+    "shows": "Empty aquarium"
+  },
+  {
+    "key": "palace-10",
+    "page": "https://commons.wikimedia.org/wiki/File:Empty_aquarium.jpg",
+    "shows": "Empty glass aquarium (CC0)",
+    "source": "Wikimedia Commons",
+    "license": "CC0",
+    "attribution_required": false,
+    "file": "palace-10.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Empty_aquarium.jpg"
+  },
+  {
+    "key": "ember-heater",
+    "license": "Public domain",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:0000_betta_aquarium.jpg",
+    "file": "0000 betta aquarium.jpg (cropped glass heater)",
+    "shows": "Glass tube aquarium heater with suction cups in betta tank",
+    "attribution_required": false,
+    "artist": "Unknown (Commons File:0000 betta aquarium.jpg)",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/0000_betta_aquarium.jpg"
+  },
+  {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Galileo-Thermometer_HDR.jpg/1920px-Galileo-Thermometer_HDR.jpg",
+    "license": "CC0",
+    "artist": "5snake5",
+    "page": "https://commons.wikimedia.org/wiki/File:Galileo-Thermometer_HDR.jpg",
+    "file": "Galileo-Thermometer HDR.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "tide-thermometer",
+    "shows": "Glass thermometer"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/000_easy_sponge_filter_for_betta_aquarium.jpg",
+    "license": "Public domain",
+    "artist": "Yo Lopera",
+    "page": "https://commons.wikimedia.org/wiki/File:000_easy_sponge_filter_for_betta_aquarium.jpg",
+    "file": "000 easy sponge filter for betta aquarium.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "whisper-sponge",
+    "shows": "Sponge filter"
+  },
+  {
+    "key": "softflow-filter",
+    "page": "https://commons.wikimedia.org/wiki/File:Auqa_osmosis.jpeg",
+    "shows": "Aquarium RO / water filter system (PD)",
+    "source": "Wikimedia Commons",
+    "license": "Public domain",
+    "attribution_required": false,
+    "file": "softflow-filter.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Auqa_osmosis.jpeg"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Eye_Dropper_Bottle_2.jpg",
+    "license": "CC0",
+    "artist": "Bondigoldwiki",
+    "page": "https://commons.wikimedia.org/wiki/File:Eye_Dropper_Bottle_2.jpg",
+    "file": "Eye Dropper Bottle 2.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "crystal-drops",
+    "shows": "Dropper bottle"
+  },
+  {
+    "key": "cycle-start",
+    "page": "https://commons.wikimedia.org/wiki/File:Eye_Dropper_Bottle_2.jpg",
+    "shows": "Dropper bottle (CC0)",
+    "source": "Wikimedia Commons",
+    "license": "CC0",
+    "attribution_required": false,
+    "file": "cycle-start.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Eye_Dropper_Bottle_2.jpg"
+  },
+  {
+    "key": "palace-test-kit",
+    "page": "https://commons.wikimedia.org/wiki/File:B%C3%B6rdelrand_bei_Reagenzgl%C3%A4sern.jpg",
+    "shows": "Test tubes (CC0)",
+    "source": "Wikimedia Commons",
+    "license": "CC0",
+    "attribution_required": false,
+    "file": "palace-test-kit__0.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:B%C3%B6rdelrand_bei_Reagenzgl%C3%A4sern.jpg"
+  },
+  {
+    "url": "https://cdn.stocksnap.io/img-thumbs/960w/3WJPTOVK6W.jpg",
+    "license": "CC0",
+    "artist": "StockSnap",
+    "page": "https://stocksnap.io/photo/3WJPTOVK6W",
+    "source": "StockSnap",
+    "file": "leaf",
+    "key": "catappa-leaf",
+    "shows": "Dried leaf",
+    "attribution_required": false
+  },
+  {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Driftwood_on_Lake.JPG/1920px-Driftwood_on_Lake.JPG",
+    "license": "CC0",
+    "artist": "Angelsharum",
+    "page": "https://commons.wikimedia.org/wiki/File:Driftwood_on_Lake.JPG",
+    "file": "Driftwood on Lake.JPG",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "mopani-drift",
+    "shows": "Driftwood on water"
+  },
+  {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Coconut_shell%2CTamilNadu150.jpg/1920px-Coconut_shell%2CTamilNadu150.jpg",
+    "license": "Public domain",
+    "artist": "\u0ba4*\u0b89\u0bb4\u0bb5\u0ba9\u0bcd (talk)",
+    "page": "https://commons.wikimedia.org/wiki/File:Coconut_shell%2CTamilNadu150.jpg",
+    "file": "Coconut shell,TamilNadu150.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "coconut-hide",
+    "shows": "Coconut shell"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Microsorum_pteropus.jpg",
+    "license": "Public domain",
+    "artist": "Tsunamicarlos at English Wikipedia",
+    "page": "https://commons.wikimedia.org/wiki/File:Microsorum_pteropus.jpg",
+    "file": "Microsorum pteropus.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "java-fern",
+    "shows": "Java fern"
+  },
+  {
+    "key": "marimo-orb",
+    "page": "https://commons.wikimedia.org/wiki/File:Aegagropila_conical_flask.jpg",
+    "shows": "Marimo moss balls in flask (CC0)",
+    "source": "Wikimedia Commons",
+    "license": "CC0",
+    "attribution_required": false,
+    "file": "marimo-orb.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Aegagropila_conical_flask.jpg"
+  },
+  {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Sand_Rock_Texture.jpg/1920px-Sand_Rock_Texture.jpg",
+    "license": "CC0",
+    "artist": "Bango Textures",
+    "page": "https://commons.wikimedia.org/wiki/File:Sand_Rock_Texture.jpg",
+    "file": "Sand Rock Texture.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "palace-gravel",
+    "shows": "Rock/gravel texture"
+  },
+  {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Yellow_sand_texture.jpg/1920px-Yellow_sand_texture.jpg",
+    "license": "Public domain",
+    "artist": "Titus Tscharntke",
+    "page": "https://commons.wikimedia.org/wiki/File:Yellow_sand_texture.jpg",
+    "file": "Yellow sand texture.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "betta-sand",
+    "shows": "Sand texture"
+  },
+  {
+    "key": "aurora-led",
+    "page": "https://commons.wikimedia.org/wiki/File:Light_blue_LED_strip.jpg",
+    "shows": "Light blue LED strip (CC0)",
+    "source": "Wikimedia Commons",
+    "license": "CC0",
+    "attribution_required": false,
+    "file": "aurora-led.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Light_blue_LED_strip.jpg"
+  },
+  {
+    "key": "ship-heat-pack",
+    "page": "https://commons.wikimedia.org/wiki/File:Ecokairo.JPG",
+    "shows": "Reusable chemical heat pack (PD)",
+    "source": "Wikimedia Commons",
+    "license": "Public domain",
+    "attribution_required": false,
+    "file": "ship-heat-pack__0.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Ecokairo.JPG"
+  },
+  {
+    "key": "breather-bags",
+    "page": "https://commons.wikimedia.org/wiki/File:Tablet_dispensing_ziplock_bag.jpg",
+    "shows": "Clear plastic ziplock bag (CC0)",
+    "source": "Wikimedia Commons",
+    "license": "CC0",
+    "attribution_required": false,
+    "file": "breather-bags.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Tablet_dispensing_ziplock_bag.jpg"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Antique_medicine_bottle_marked_calomel.jpg",
+    "license": "CC0",
+    "artist": "terry lavigne",
+    "page": "https://commons.wikimedia.org/wiki/File:Antique_medicine_bottle_marked_calomel.jpg",
+    "file": "Antique medicine bottle marked calomel.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "fin-mend",
+    "shows": "Medicine bottle"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Eye_Dropper_Bottle_1.jpg",
+    "license": "CC0",
+    "artist": "Bondigoldwiki",
+    "page": "https://commons.wikimedia.org/wiki/File:Eye_Dropper_Bottle_1.jpg",
+    "file": "Eye Dropper Bottle 1.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "parasite-guard",
+    "shows": "Dropper bottle"
+  },
+  {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Salt-crystals.jpg/1920px-Salt-crystals.jpg",
+    "license": "CC0",
+    "artist": "Nate Steiner",
+    "page": "https://commons.wikimedia.org/wiki/File:Salt-crystals.jpg",
+    "file": "Salt-crystals.jpg",
+    "source": "Wikimedia Commons",
+    "attribution_required": false,
+    "key": "palace-salt",
+    "shows": "Salt crystals"
+  },
+  {
+    "key": "soft-net",
+    "page": "https://commons.wikimedia.org/wiki/File:Aquarienkescher.JPG",
+    "shows": "Aquarium fish nets (PD)",
+    "source": "Wikimedia Commons",
+    "license": "Public domain",
+    "attribution_required": false,
+    "file": "soft-net.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Aquarienkescher.JPG"
+  },
+  {
+    "key": "brine-hatchery",
+    "page": "https://commons.wikimedia.org/wiki/File:Genoa_NFH_Brine_Shrimp_Feeder_(22696284678).jpg",
+    "shows": "Brine shrimp feeder cones (PD)",
+    "source": "Wikimedia Commons",
+    "license": "Public domain",
+    "attribution_required": false,
+    "file": "brine-hatchery.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Genoa_NFH_Brine_Shrimp_Feeder_(22696284678).jpg"
+  },
+  {
+    "key": "nest-anchor",
+    "page": "https://commons.wikimedia.org/wiki/File:0000_styrofoam_nest_for_bettas.jpg",
+    "shows": "Styrofoam bubble nest anchor with nest",
+    "source": "Wikimedia Commons",
+    "license": "Public domain",
+    "attribution_required": false,
+    "artist": "Unknown (Commons File:0000 styrofoam nest for bettas.jpg)",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/0000_styrofoam_nest_for_bettas.jpg",
+    "file": "0000 styrofoam nest for bettas.jpg"
+  },
+  {
+    "key": "qt-starter",
+    "page": "https://commons.wikimedia.org/wiki/File:Empty_aquarium.jpg",
+    "shows": "Empty aquarium QT stand-in (CC0) \u2014 no non-betta fish",
+    "source": "Wikimedia Commons",
+    "license": "CC0",
+    "attribution_required": false,
+    "file": "qt-starter.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Empty_aquarium.jpg"
+  },
+  {
+    "key": "og-cover",
+    "page": "https://unsplash.com/photos/gp47f3nMHck",
+    "shows": "Red betta homepage cover",
+    "source": "Unsplash",
+    "license": "Unsplash License",
+    "artist": "Tarah Dane",
+    "attribution_required": false,
+    "url": "https://images.unsplash.com/photo-1562090303-01bc2e2bd490"
+  }
+]

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Premium Auto Service — luxury tires & accessories demo by Robot Kitchen. Fictional products. No real orders." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://robotkitchen.us/demo/tires/" />
+  <meta property="og:title" content="Premium Auto Service · Luxury tires & accessories" />
+  <meta property="og:description" content="Premium Auto Service — luxury tires & accessories demo by Robot Kitchen. Michelin, Pirelli, Bridgestone & Continental. Fictional demo — no real orders." />
+  <meta property="og:image" content="https://robotkitchen.us/demo/tires/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Premium Auto Service · Luxury tires & accessories" />
+  <meta name="twitter:description" content="Premium Auto Service — luxury tires & accessories demo by Robot Kitchen. Fictional demo — no real orders." />
+  <meta name="twitter:image" content="https://robotkitchen.us/demo/tires/og.jpg" />
+  <title>Premium Auto Service · Demo · Robot Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/webp" href="/assets/logo.webp" />
+  <link rel="stylesheet" href="store.css" />
+</head>
+<body>
+  <div class="demo-strip" role="status">
+    <strong>Demo — no real orders.</strong>
+    Real Michelin, Pirelli, Bridgestone &amp; Continental sizes. Cart checkout is TEST MODE only — no real charges. Built for Robot Kitchen design preview.
+    <a class="demo-strip-back" href="/">← robotkitchen.us</a>
+  </div>
+
+  <header class="store-header">
+    <div class="header-inner">
+      <a class="logo" href="#/" aria-label="Premium Auto Service home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><rect width="40" height="40" rx="2" fill="#0a0a0a"/><rect x="1.5" y="1.5" width="37" height="37" rx="1.5" fill="none" stroke="#C6A75E" stroke-width="0.75"/><text x="20" y="24" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#F4EFE6" letter-spacing="1">PA</text></svg>
+        </span>
+        <span class="logo-text">
+          <span class="logo-name">Premium Auto Service</span>
+          <span class="logo-tag">Luxury tires &amp; accessories · demo</span>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Store">
+        <a href="#/">Shop tires</a>
+        <button type="button" class="cart-btn" id="cart-toggle" aria-expanded="false" aria-controls="cart-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6L5 3H2"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Shopping cart">
+    <div class="cart-drawer-head">
+      <h2>Your cart <span class="demo-pill">demo</span></h2>
+      <button type="button" class="icon-btn" id="cart-close" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-body"></div>
+    <div class="cart-drawer-foot" id="cart-foot"></div>
+  </aside>
+  <div class="cart-scrim" id="cart-scrim" hidden></div>
+
+  <footer class="store-footer">
+    <div class="footer-inner">
+      <p><strong>Premium Auto Service</strong> — fictional luxury demo for Robot Kitchen. Not affiliated with any real retailer.</p>
+      <p>© 2026 Robot Kitchen LLC · <a href="/">robotkitchen.us</a> · <span class="demo-pill">noindex demo</span></p>
+    </div>
+  </footer>
+
+  <script src="store.js"></script>
+</body>
+</html>

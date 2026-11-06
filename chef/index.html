@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Chef demo — Robot Kitchen. Turns a recipe into a shopping list and fills a mock Instacart cart." />
+    <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://robotkitchen.us/demo/chef/" />
+  <meta property="og:title" content="Chef Demo · Robot Kitchen" />
+  <meta property="og:description" content="Chef demo — Robot Kitchen. Turns a recipe into a shopping list and fills a mock Instacart cart." />
+  <meta property="og:image" content="https://robotkitchen.us/demo/chef/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chef Demo · Robot Kitchen" />
+  <meta name="twitter:description" content="Chef demo — Robot Kitchen. Turns a recipe into a shopping list and fills a mock Instacart cart." />
+  <meta name="twitter:image" content="https://robotkitchen.us/demo/chef/og.jpg" />
+<title>Chef Demo · Robot Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Noto+Sans+TC:wght@300;400;500;600&amp;display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/webp" href="/assets/logo.webp" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Robot Kitchen">
+      <picture>
+        <source srcset="/assets/logo.webp" type="image/webp" />
+        <img src="/assets/logo.jpg" alt="Robot Kitchen" width="40" height="40" class="brand-logo" />
+      </picture>
+      <span class="brand-name">Robot Kitchen</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/#bots">Bots</a>
+    </nav>
+  </header>
+
+  <main class="demo-page">
+    <div class="demo-topbar">
+      <a class="demo-back" href="/#bots" data-i18n="back">← Back to home</a>
+      <div class="demo-lang" hidden role="group" aria-label="Language">
+        <button type="button" class="active" data-lang="en">English</button>
+      </div>
+    </div>
+
+    <div class="demo-hero">
+      <picture>
+        <source srcset="/assets/bots/chef.webp" type="image/webp" />
+        <img src="/assets/bots/chef.png" alt="" width="72" height="72" />
+      </picture>
+      <div>
+        <h1 data-i18n="title">Chef Demo</h1>
+        <p data-i18n="subtitle">Recipe → shopping list → mock Instacart cart</p>
+      </div>
+    </div>
+
+    <p class="demo-banner" data-i18n="banner">Interactive demo only. No real API calls, no payment, no Instacart checkout. All prices and quantities are example data.</p>
+
+    <section class="demo-panel">
+      <h2 data-i18n="pick_title">1. Pick a dish or meal plan</h2>
+      <div class="demo-chips" id="dish-chips"></div>
+      <div class="demo-input-row">
+        <input type="text" id="dish-input" maxlength="80" data-i18n-ph="input_ph" placeholder="Or type a dish, e.g. tomato egg stir-fry" />
+        <button type="button" class="demo-run" id="run-btn" data-i18n="run">Generate list</button>
+      </div>
+    </section>
+
+    <section class="demo-panel" id="steps-panel">
+      <h2 data-i18n="steps_title">2. Chef is working…</h2>
+      <ol class="demo-steps" id="steps"></ol>
+    </section>
+
+    <section class="demo-panel demo-hidden" id="result-panel">
+      <h2><span data-i18n="list_title">3. Shopping list</span> <span class="demo-example-tag" data-i18n="example">example</span></h2>
+      <ul class="demo-list" id="shop-list"></ul>
+      <div class="demo-cart">
+        <span class="cart-label" data-i18n="cart_label">Demo cart · not real</span>
+        <div class="cart-total" id="cart-total"></div>
+        <p class="cart-note" data-i18n="cart_note">Mock Instacart cart summary. No items were added to any real cart.</p>
+      </div>
+      <p style="margin:1rem 0 0;font-size:0.78rem;color:var(--fg-dim)" data-i18n="reset_hint">Pick another dish to run again.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <picture>
+          <source srcset="/assets/logo.webp" type="image/webp" />
+          <img src="/assets/logo.jpg" alt="" width="28" height="28" />
+        </picture>
+        <span>Robot Kitchen</span>
+      </div>
+      <div class="footer-meta">
+        <a class="footer-link" href="https://robotkitchen.us">robotkitchen.us</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <span>© 2026 Robot Kitchen LLC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+(function () {
+  const I18N = {
+    en: {
+      back: "← Back to home",
+      title: "Chef Demo",
+      subtitle: "Recipe → shopping list → mock Instacart cart",
+      banner: "Interactive demo only. No real API calls, no payment, no Instacart checkout. All prices and quantities are example data.",
+      pick_title: "1. Pick a dish or meal plan",
+      input_ph: "Or type a dish, e.g. tomato egg stir-fry",
+      run: "Generate list",
+      steps_title: "2. Chef is working…",
+      list_title: "3. Shopping list",
+      example: "example",
+      cart_label: "Demo cart · not real",
+      cart_note: "Mock Instacart cart summary. No items were added to any real cart.",
+      reset_hint: "Pick another dish to run again.",
+      step1: "Reading your dish / meal plan",
+      step2: "Breaking into ingredients + quantities",
+      step3: "Matching sample grocery items",
+      step4: "Building a mock Instacart cart",
+      servings: "Example for 4 servings",
+      cart_line: "{n} items · est. ${t} (example)",
+      dishes: [
+        { id: "tomato", label: "Tomato egg stir-fry", items: [
+          { n: "Eggs", q: "6 pcs", p: 3.49 },
+          { n: "Tomatoes", q: "4 pcs", p: 4.29 },
+          { n: "Green onion", q: "1 bunch", p: 1.29 },
+          { n: "Cooking oil", q: "1 bottle", p: 4.99 },
+          { n: "Soy sauce", q: "1 bottle", p: 3.79 }
+        ]},
+        { id: "week", label: "3-day family meal plan", items: [
+          { n: "Chicken thighs", q: "2 lb", p: 8.99 },
+          { n: "Rice", q: "5 lb bag", p: 6.49 },
+          { n: "Broccoli", q: "2 crowns", p: 3.98 },
+          { n: "Tofu", q: "2 packs", p: 4.58 },
+          { n: "Garlic", q: "1 head", p: 0.79 },
+          { n: "Milk", q: "1/2 gal", p: 3.29 },
+          { n: "Eggs", q: "1 dozen", p: 3.99 },
+          { n: "Pasta", q: "2 boxes", p: 3.58 }
+        ]},
+        { id: "pasta", label: "Garlic butter pasta", items: [
+          { n: "Spaghetti", q: "1 lb", p: 1.79 },
+          { n: "Butter", q: "1 stick", p: 2.49 },
+          { n: "Garlic", q: "1 head", p: 0.79 },
+          { n: "Parmesan", q: "8 oz", p: 4.99 },
+          { n: "Parsley", q: "1 bunch", p: 1.49 }
+        ]},
+        { id: "soup", label: "Chicken noodle soup", items: [
+          { n: "Chicken breast", q: "1.5 lb", p: 7.49 },
+          { n: "Egg noodles", q: "12 oz", p: 2.29 },
+          { n: "Carrots", q: "1 lb", p: 1.49 },
+          { n: "Celery", q: "1 bunch", p: 1.99 },
+          { n: "Onion", q: "2 pcs", p: 1.58 },
+          { n: "Chicken broth", q: "2 cartons", p: 5.98 }
+        ]}
+      ]
+    },
+    zh: {
+      back: "← 返回首頁",
+      title: "Chef 試玩",
+      subtitle: "食譜 → 購物清單 → 模擬 Instacart 購物車",
+      banner: "互動演示，無真實 API、無付款、無 Instacart 結帳。所有價格與數量皆為範例資料。",
+      pick_title: "1. 選一道菜或餐點計畫",
+      input_ph: "或自行輸入菜名，例如：番茄炒蛋",
+      run: "產生清單",
+      steps_title: "2. Chef 處理中…",
+      list_title: "3. 購物清單",
+      example: "範例",
+      cart_label: "Demo 購物車 · 非真實",
+      cart_note: "模擬 Instacart 購物車摘要。未加入任何真實購物車。",
+      reset_hint: "可再選其他菜色重新試玩。",
+      step1: "讀取你的菜色／餐點計畫",
+      step2: "拆成食材與份量",
+      step3: "比對範例超市商品",
+      step4: "建立模擬 Instacart 購物車",
+      servings: "範例：約 4 人份",
+      cart_line: "{n} 項 · 估 $ {t}（範例）",
+      dishes: [
+        { id: "tomato", label: "番茄炒蛋", items: [
+          { n: "雞蛋", q: "6 顆", p: 3.49 },
+          { n: "番茄", q: "4 顆", p: 4.29 },
+          { n: "青蔥", q: "1 把", p: 1.29 },
+          { n: "食用油", q: "1 瓶", p: 4.99 },
+          { n: "醬油", q: "1 瓶", p: 3.79 }
+        ]},
+        { id: "week", label: "三日家庭餐點計畫", items: [
+          { n: "雞腿肉", q: "2 磅", p: 8.99 },
+          { n: "白米", q: "5 磅袋", p: 6.49 },
+          { n: "花椰菜", q: "2 顆", p: 3.98 },
+          { n: "豆腐", q: "2 盒", p: 4.58 },
+          { n: "大蒜", q: "1 頭", p: 0.79 },
+          { n: "牛奶", q: "半加侖", p: 3.29 },
+          { n: "雞蛋", q: "1 打", p: 3.99 },
+          { n: "義大利麵", q: "2 盒", p: 3.58 }
+        ]},
+        { id: "pasta", label: "蒜香奶油義大利麵", items: [
+          { n: "義大利麵", q: "1 磅", p: 1.79 },
+          { n: "奶油", q: "1 條", p: 2.49 },
+          { n: "大蒜", q: "1 頭", p: 0.79 },
+          { n: "帕瑪森起司", q: "8 盎司", p: 4.99 },
+          { n: "巴西里", q: "1 把", p: 1.49 }
+        ]},
+        { id: "soup", label: "雞麵湯", items: [
+          { n: "雞胸肉", q: "1.5 磅", p: 7.49 },
+          { n: "蛋麵", q: "12 盎司", p: 2.29 },
+          { n: "胡蘿蔔", q: "1 磅", p: 1.49 },
+          { n: "芹菜", q: "1 把", p: 1.99 },
+          { n: "洋蔥", q: "2 顆", p: 1.58 },
+          { n: "雞湯底", q: "2 盒", p: 5.98 }
+        ]}
+      ]
+    }
+  };
+
+  let lang = "en";
+  let selectedId = "tomato";
+  let timer = null;
+
+  const $ = (s) => document.querySelector(s);
+  const t = () => I18N[lang];
+
+  function applyI18n() {
+    document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const k = el.getAttribute("data-i18n");
+      if (t()[k] != null) el.textContent = t()[k];
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
+      const k = el.getAttribute("data-i18n-ph");
+      if (t()[k] != null) el.placeholder = t()[k];
+    });
+    renderChips();
+    renderStepsIdle();
+  }
+
+  function renderChips() {
+    const host = $("#dish-chips");
+    host.innerHTML = "";
+    t().dishes.forEach((d) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "demo-chip" + (d.id === selectedId ? " selected" : "");
+      b.textContent = d.label;
+      b.addEventListener("click", () => {
+        selectedId = d.id;
+        $("#dish-input").value = "";
+        renderChips();
+      });
+      host.appendChild(b);
+    });
+  }
+
+  function renderStepsIdle() {
+    const steps = [t().step1, t().step2, t().step3, t().step4];
+    const ol = $("#steps");
+    ol.innerHTML = "";
+    steps.forEach((s, i) => {
+      const li = document.createElement("li");
+      li.innerHTML = '<span class="demo-step-dot">' + (i + 1) + "</span><span>" + s + "</span>";
+      ol.appendChild(li);
+    });
+  }
+
+  function findDish() {
+    const custom = ($("#dish-input").value || "").trim();
+    if (custom) {
+      const base = t().dishes[0];
+      return {
+        label: custom,
+        items: base.items.map((it) => Object.assign({}, it))
+      };
+    }
+    return t().dishes.find((d) => d.id === selectedId) || t().dishes[0];
+  }
+
+  function runDemo() {
+    if (timer) clearTimeout(timer);
+    const dish = findDish();
+    const ol = $("#steps");
+    const lis = Array.from(ol.children);
+    lis.forEach((li) => { li.className = ""; });
+    $("#result-panel").classList.add("demo-hidden");
+    $("#run-btn").disabled = true;
+
+    let i = 0;
+    function next() {
+      if (i > 0) lis[i - 1].classList.remove("on"), lis[i - 1].classList.add("done");
+      if (i < lis.length) {
+        lis[i].classList.add("on");
+        i += 1;
+        timer = setTimeout(next, 550);
+      } else {
+        showResult(dish);
+        $("#run-btn").disabled = false;
+      }
+    }
+    next();
+  }
+
+  function showResult(dish) {
+    const ul = $("#shop-list");
+    ul.innerHTML = "";
+    const note = document.createElement("li");
+    note.style.borderBottom = "none";
+    note.style.color = "var(--fg-dim)";
+    note.style.fontSize = "0.8rem";
+    note.textContent = dish.label + " · " + t().servings;
+    ul.appendChild(note);
+    let total = 0;
+    dish.items.forEach((it) => {
+      total += it.p;
+      const li = document.createElement("li");
+      li.innerHTML = "<span>" + it.n + '</span><span class="qty">' + it.q + " · $" + it.p.toFixed(2) + " <span class='demo-example-tag'>" + t().example + "</span></span>";
+      ul.appendChild(li);
+    });
+    $("#cart-total").textContent = t().cart_line
+      .replace("{n}", String(dish.items.length))
+      .replace("{t}", total.toFixed(2));
+    $("#result-panel").classList.remove("demo-hidden");
+    $("#result-panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  document.querySelectorAll(".demo-lang button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      lang = btn.getAttribute("data-lang");
+      document.querySelectorAll(".demo-lang button").forEach((b) => b.classList.toggle("active", b === btn));
+      applyI18n();
+      $("#result-panel").classList.add("demo-hidden");
+    });
+  });
+  $("#run-btn").addEventListener("click", runDemo);
+  applyI18n();
+})();
+  </script>
+</body>
+</html>

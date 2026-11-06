@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <defs>
+    <linearGradient id="tank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a3048"/>
+      <stop offset="55%" stop-color="#061820"/>
+      <stop offset="100%" stop-color="#031018"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#0d9488" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#06141f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#06141f"/>
+  
+  <rect width="1200" height="630" fill="url(#tank)"/>
+  <ellipse cx="600" cy="280" rx="420" ry="220" fill="url(#glow)"/>
+  <!-- bubbles -->
+  <circle cx="180" cy="160" r="8" fill="#5eead4" opacity="0.25"/>
+  <circle cx="220" cy="220" r="5" fill="#5eead4" opacity="0.2"/>
+  <circle cx="980" cy="140" r="10" fill="#5eead4" opacity="0.22"/>
+  <circle cx="1040" cy="260" r="6" fill="#5eead4" opacity="0.18"/>
+  <circle cx="140" cy="400" r="7" fill="#5eead4" opacity="0.15"/>
+  <!-- plants -->
+  <path d="M80 560 C100 420 40 360 90 300 C60 380 120 460 100 560Z" fill="#134e4a" opacity="0.7"/>
+  <path d="M130 580 C160 440 90 380 150 280 C110 380 180 480 150 580Z" fill="#0f766e" opacity="0.55"/>
+  <path d="M1080 570 C1060 430 1120 370 1070 290 C1100 380 1040 470 1060 570Z" fill="#134e4a" opacity="0.65"/>
+  <path d="M1120 590 C1160 450 1080 380 1140 300 C1100 400 1180 500 1140 590Z" fill="#0f766e" opacity="0.5"/>
+  
+  <g transform="translate(520,300) scale(3.2)">
+    <ellipse cx="0" cy="0" rx="38" ry="18" fill="#e11d48"/>
+    <ellipse cx="18" cy="-2" rx="14" ry="10" fill="#e11d48"/>
+    <circle cx="28" cy="-4" r="2.2" fill="#0f172a"/>
+    <circle cx="28.7" cy="-4.5" r="0.7" fill="#fff" opacity="0.85"/>
+    <!-- dorsal -->
+    <path d="M-10,-14 C0,-42 28,-38 34,-12 C18,-18 4,-20 -10,-14Z" fill="#fb7185" opacity="0.95"/>
+    <!-- caudal halfmoon -->
+    <path d="M-36,0 C-70,-36 -78,-8 -72,4 C-78,18 -68,38 -36,2 Z" fill="#fb7185"/>
+    <path d="M-40,-8 C-58,-28 -62,-6 -56,0 C-62,10 -56,26 -38,6" fill="#d4a84b" opacity="0.55"/>
+    <!-- ventral -->
+    <path d="M-6,12 C4,34 22,28 26,10 C12,16 2,14 -6,12Z" fill="#fb7185" opacity="0.9"/>
+    <!-- pectoral -->
+    <path d="M8,6 C18,18 26,10 18,2 Z" fill="#d4a84b" opacity="0.7"/>
+    <!-- gill mark -->
+    <path d="M10,-6 C14,0 12,8 8,6" fill="none" stroke="#d4a84b" stroke-width="1.4" opacity="0.7"/>
+  </g>
+  
+  <g transform="translate(780,340) scale(2.4)">
+    <ellipse cx="0" cy="0" rx="38" ry="18" fill="#7c3aed"/>
+    <ellipse cx="18" cy="-2" rx="14" ry="10" fill="#7c3aed"/>
+    <circle cx="28" cy="-4" r="2.2" fill="#0f172a"/>
+    <circle cx="28.7" cy="-4.5" r="0.7" fill="#fff" opacity="0.85"/>
+    <!-- dorsal -->
+    <path d="M-10,-14 C0,-42 28,-38 34,-12 C18,-18 4,-20 -10,-14Z" fill="#a78bfa" opacity="0.95"/>
+    <!-- caudal halfmoon -->
+    <path d="M-36,0 C-70,-36 -78,-8 -72,4 C-78,18 -68,38 -36,2 Z" fill="#a78bfa"/>
+    <path d="M-40,-8 C-58,-28 -62,-6 -56,0 C-62,10 -56,26 -38,6" fill="#fbbf24" opacity="0.55"/>
+    <!-- ventral -->
+    <path d="M-6,12 C4,34 22,28 26,10 C12,16 2,14 -6,12Z" fill="#a78bfa" opacity="0.9"/>
+    <!-- pectoral -->
+    <path d="M8,6 C18,18 26,10 18,2 Z" fill="#fbbf24" opacity="0.7"/>
+    <!-- gill mark -->
+    <path d="M10,-6 C14,0 12,8 8,6" fill="none" stroke="#fbbf24" stroke-width="1.4" opacity="0.7"/>
+  </g>
+  <rect x="0" y="470" width="1200" height="160" fill="url(#shine)"/>
+  <text x="60" y="540" font-family="Georgia,serif" font-size="54" fill="#f5f0e8">Betta Dragon Palace</text>
+  <text x="60" y="580" font-family="system-ui,sans-serif" font-size="22" fill="#5eead4">Aquarium-grade live bettas &amp; supplies · demo shop</text>
+
+</svg>

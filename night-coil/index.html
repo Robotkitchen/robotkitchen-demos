@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="Night Coil BBQ — fictional Korean BBQ food-truck ordering demo by Robot Kitchen. Demo store, no real charges." />
+  <title>Night Coil BBQ · Order · Robot Kitchen Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0F0F10" />
+  <meta property="og:title" content="Night Coil BBQ · Order · Robot Kitchen Demo" />
+  <meta property="og:description" content="Night Coil BBQ — fictional Korean BBQ food-truck ordering demo by Robot Kitchen. Demo store, no real charges." />
+  <meta property="og:image" content="https://robotkitchen.us/demo/night-coil/img/og-night-coil.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://robotkitchen.us/demo/night-coil/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Robot Kitchen" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Night Coil BBQ · Order · Robot Kitchen Demo" />
+  <meta name="twitter:description" content="Night Coil BBQ — fictional Korean BBQ food-truck ordering demo by Robot Kitchen. Demo store, no real charges." />
+  <meta name="twitter:image" content="https://robotkitchen.us/demo/night-coil/img/og-night-coil.jpg" />
+  <link rel="stylesheet" href="store.css" />
+</head>
+<body>
+  <div class="demo-strip" role="status">
+    <strong>Demo — no real charges.</strong>
+    Invented brand · <a href="/" style="color:inherit;text-decoration:underline">Built by Robot Kitchen</a>
+  </div>
+
+  <header class="store-header">
+    <div class="header-inner">
+      <a class="logo" href="#/" aria-label="Night Coil BBQ home">
+        <img class="logo-img" src="img/logo.svg" width="44" height="44" alt="" />
+        <span class="logo-text">
+          <span class="logo-name">Night Coil BBQ</span>
+          <span class="logo-tag">Korean short-rib · rolling kitchen</span>
+        </span>
+      </a>
+      <button type="button" class="cart-btn" id="cart-toggle" aria-expanded="false" aria-controls="cart-drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6L5 3H2"/></svg>
+        <span class="cart-label">Cart</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Your order">
+    <div class="cart-drawer-head">
+      <h2>Your order <span class="demo-pill">demo</span></h2>
+      <button type="button" class="icon-btn" id="cart-close" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-body"></div>
+    <div class="cart-drawer-foot" id="cart-foot"></div>
+  </aside>
+  <div class="cart-scrim" id="cart-scrim" hidden></div>
+
+  <div class="modal-scrim" id="modal-scrim" hidden></div>
+  <div class="item-modal" id="item-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden></div>
+
+  <footer class="store-footer">
+    <div class="footer-inner">
+      <p>Night Coil BBQ is a fictional brand created as a Robot Kitchen portfolio demo.</p>
+      <p><a href="https://robotkitchen.us">robotkitchen.us</a></p>
+    </div>
+  </footer>
+
+  <!-- Built by Robot Kitchen — X-style floating source card -->
+  <div class="rk-source-card" id="rk-source-card" hidden>
+    <img class="rk-source-logo" src="/assets/logo.jpg" width="36" height="36" alt="" />
+    <div class="rk-source-body">
+      <p class="rk-source-label">Built by</p>
+      <a class="rk-source-link" href="https://robotkitchen.us" target="_blank" rel="noopener">Robot Kitchen · robotkitchen.us</a>
+    </div>
+    <button type="button" class="rk-source-close" id="rk-source-close" aria-label="Dismiss">×</button>
+  </div>
+
+  <script src="store.js"></script>
+</body>
+</html>

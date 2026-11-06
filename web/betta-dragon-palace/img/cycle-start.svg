@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img">
+  <defs>
+    <linearGradient id="tank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a3048"/>
+      <stop offset="100%" stop-color="#031018"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#84cc16" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#06141f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#tank)"/>
+  <ellipse cx="320" cy="220" rx="220" ry="150" fill="url(#glow)"/>
+  <rect x="220" y="100" width="200" height="260" rx="16" fill="#365314" stroke="#a3e635" stroke-width="3"/><circle cx="320" cy="220" r="40" fill="#84cc16" opacity="0.5"/><circle cx="300" cy="240" r="20" fill="#a3e635" opacity="0.4"/>
+  <text x="32" y="448" font-family="Georgia,serif" font-size="22" fill="#f5f0e8">Cycle Start Bacteria</text>
+</svg>

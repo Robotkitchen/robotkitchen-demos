@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img">
+  <defs>
+    <linearGradient id="tank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a3048"/>
+      <stop offset="100%" stop-color="#031018"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#06141f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#tank)"/>
+  <ellipse cx="320" cy="220" rx="220" ry="150" fill="url(#glow)"/>
+  <rect x="200" y="100" width="240" height="260" rx="20" fill="#083344" stroke="#22d3ee" stroke-width="3"/><ellipse cx="320" cy="280" rx="70" ry="30" fill="#164e63"/><circle cx="280" cy="200" r="4" fill="#67e8f9"/><circle cx="340" cy="180" r="3" fill="#a5f3fc"/><circle cx="310" cy="220" r="3" fill="#67e8f9"/>
+  <text x="32" y="448" font-family="Georgia,serif" font-size="22" fill="#f5f0e8">Brine Hatchery Kit</text>
+</svg>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="WEAN Glass — boutique glassware retail demo by Robot Kitchen. For tobacco and other legal use only. 21+. Demo store, no real charges." />
+  <title>WEAN Glass · Shop · Robot Kitchen Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0B0B0C" />
+  <meta property="og:title" content="WEAN Glass · Shop · Robot Kitchen Demo" />
+  <meta property="og:description" content="WEAN Glass — boutique glassware retail demo by Robot Kitchen. For tobacco and other legal use only. 21+. Demo store, no real charges." />
+  <meta property="og:image" content="https://robotkitchen.us/demo/web/wean/img/og-wean.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://robotkitchen.us/demo/web/wean/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Robot Kitchen" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WEAN Glass · Shop · Robot Kitchen Demo" />
+  <meta name="twitter:description" content="WEAN Glass — boutique glassware retail demo by Robot Kitchen. For tobacco and other legal use only. 21+. Demo store, no real charges." />
+  <meta name="twitter:image" content="https://robotkitchen.us/demo/web/wean/img/og-wean.jpg" />
+  <link rel="stylesheet" href="store.css" />
+</head>
+<body class="age-locked">
+  <div class="age-gate" id="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-title">
+    <div class="age-card">
+      <img class="age-logo" src="img/wean-mark-256.jpg" width="88" height="88" alt="" />
+      <p class="age-brand">WEAN Glass</p>
+      <h1 id="age-title">Are you 21 or older?</h1>
+      <p class="age-copy">This demo storefront sells glassware for tobacco and other legal use only. You must be 21+ to enter.</p>
+      <div class="age-actions">
+        <button type="button" class="primary-btn" id="age-yes">I am 21+</button>
+        <button type="button" class="ghost-btn age-no" id="age-no">I am under 21 — Exit</button>
+      </div>
+      <p class="age-fine">Demo only · No real sales · Built by Robot Kitchen</p>
+    </div>
+  </div>
+
+  <div class="age-exit" id="age-exit" hidden>
+    <div class="age-card">
+      <h1>Thanks for visiting</h1>
+      <p class="age-copy">WEAN Glass is for adults 21 and over. Please come back when you are of age.</p>
+      <a class="primary-btn" href="https://robotkitchen.us">Back to Robot Kitchen</a>
+    </div>
+  </div>
+
+  <div id="store-shell" hidden>
+    <div class="demo-strip" role="status">
+      <strong>Demo — no real charges.</strong>
+      21+ · Tobacco / legal use only · <a href="/" style="color:inherit;text-decoration:underline">Built by Robot Kitchen</a>
+    </div>
+
+    <header class="store-header">
+      <div class="header-inner">
+        <a class="logo" href="#/" aria-label="WEAN Glass home">
+          <img class="logo-img" src="img/wean-mark-256.jpg" width="40" height="40" alt="" />
+          <span class="logo-text">
+            <span class="logo-name">WEAN Glass</span>
+            <span class="logo-tag">Boutique glassware · 21+</span>
+          </span>
+        </a>
+        <button type="button" class="cart-btn" id="cart-toggle" aria-expanded="false" aria-controls="cart-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6L5 3H2"/></svg>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="app"></main>
+
+    <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Your cart">
+      <div class="cart-drawer-head">
+        <h2>Your cart <span class="demo-pill">demo</span></h2>
+        <button type="button" class="icon-btn" id="cart-close" aria-label="Close cart">×</button>
+      </div>
+      <div class="cart-drawer-body" id="cart-body"></div>
+      <div class="cart-drawer-foot" id="cart-foot"></div>
+    </aside>
+    <div class="cart-scrim" id="cart-scrim" hidden></div>
+
+    <div class="modal-scrim" id="modal-scrim" hidden></div>
+    <div class="item-modal" id="item-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden></div>
+
+    <footer class="store-footer">
+      <div class="footer-inner">
+        <p>WEAN Glass is a demo storefront created as a Robot Kitchen portfolio piece.</p>
+        <p class="legal-note">Glassware offered for tobacco and other legal use only. Must be 21+. No health claims. Not affiliated with any third-party glass brands.</p>
+        <p><a href="https://robotkitchen.us">robotkitchen.us</a></p>
+      </div>
+    </footer>
+
+    <div class="rk-source-card" id="rk-source-card" hidden>
+      <img class="rk-source-logo" src="/assets/logo.jpg" width="36" height="36" alt="" />
+      <div class="rk-source-body">
+        <p class="rk-source-label">Built by</p>
+        <a class="rk-source-link" href="https://robotkitchen.us" target="_blank" rel="noopener">Robot Kitchen · robotkitchen.us</a>
+      </div>
+      <button type="button" class="rk-source-close" id="rk-source-close" aria-label="Dismiss">×</button>
+    </div>
+  </div>
+
+  <script src="store.js"></script>
+</body>
+</html>

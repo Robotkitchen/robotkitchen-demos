@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="BoB demo — Robot Kitchen. Photo recognition, pricing, item card, marketplace guide, and customer reply draft for small sellers." />
+  <title>BoB Demo · Robot Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Noto+Sans+TC:wght@300;400;500;600&amp;display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/webp" href="/assets/logo.webp" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .bob-photo-zone {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: stretch; margin-bottom: 0.9rem;
+    }
+    .bob-photo-preview {
+      width: 120px; height: 120px; border-radius: 14px; border: 1px dashed var(--line-strong);
+      background: #0a0a0a; display: flex; align-items: center; justify-content: center;
+      overflow: hidden; color: var(--fg-dim); font-size: 0.75rem; text-align: center; padding: 0.5rem;
+      flex: 0 0 120px;
+    }
+    .bob-photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .bob-photo-actions { flex: 1 1 160px; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center; }
+    .bob-photo-actions label.demo-run, .bob-photo-actions .demo-chip {
+      display: inline-flex; align-items: center; justify-content: center; cursor: pointer; text-align: center;
+    }
+    .bob-photo-actions input[type=file] { display: none; }
+    .bob-recog {
+      margin-top: 0.75rem; padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03); font-size: 0.9rem;
+    }
+    .bob-recog dl { margin: 0; display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.35rem 0.75rem; }
+    .bob-recog dt { color: var(--fg-dim); font-size: 0.78rem; }
+    .bob-recog dd { margin: 0; }
+    .item-card {
+      display: grid; grid-template-columns: 100px 1fr; gap: 1rem; padding: 1rem;
+      border-radius: 14px; border: 1px solid var(--line-strong); background: #0a0a0a;
+    }
+    .item-card .ic-photo {
+      width: 100px; height: 100px; border-radius: 12px; background: #111;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      font-size: 2.2rem; border: 1px solid var(--line);
+    }
+    .item-card .ic-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .item-card h3 { margin: 0 0 0.25rem; font-size: 1.05rem; font-weight: 500; }
+    .item-card .ic-meta { margin: 0 0 0.45rem; color: var(--fg-dim); font-size: 0.8rem; }
+    .item-card .ic-price { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.35rem; }
+    .item-card .ic-blurb { margin: 0; color: var(--fg-muted); font-size: 0.85rem; line-height: 1.45; }
+    .mp-grid { display: grid; gap: 0.75rem; }
+    .mp-card {
+      padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.02);
+    }
+    .mp-card.best { border-color: rgba(255,200,100,0.5); background: rgba(255,180,40,0.06); }
+    .mp-card .mp-name { font-weight: 500; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+    .mp-card .mp-fit { color: var(--fg-muted); font-size: 0.85rem; margin: 0 0 0.35rem; }
+    .mp-card .mp-tip { margin: 0; color: var(--fg-dim); font-size: 0.8rem; }
+    .mp-badge {
+      display: inline-block; padding: 0.1rem 0.45rem; border-radius: 999px; font-size: 0.65rem;
+      letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid rgba(255,200,100,0.45); color: #f0b060;
+    }
+    @media (max-width: 420px) {
+      .item-card { grid-template-columns: 1fr; }
+      .item-card .ic-photo { width: 100%; height: 140px; }
+      .bob-recog dl { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Robot Kitchen">
+      <picture>
+        <source srcset="/assets/logo.webp" type="image/webp" />
+        <img src="/assets/logo.jpg" alt="Robot Kitchen" width="40" height="40" class="brand-logo" />
+      </picture>
+      <span class="brand-name">Robot Kitchen</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/#bots">Bots</a>
+    </nav>
+  </header>
+
+  <main class="demo-page">
+    <div class="demo-topbar">
+      <a class="demo-back" href="/#bots" data-i18n="back">← Back to home</a>
+      <div class="demo-lang" hidden role="group" aria-label="Language">
+        <button type="button" class="active" data-lang="en">English</button>
+      </div>
+    </div>
+
+    <div class="demo-hero">
+      <picture>
+        <source srcset="/assets/bots/bob.webp" type="image/webp" />
+        <img src="/assets/bots/bob.png" alt="" width="72" height="72" />
+      </picture>
+      <div>
+        <h1 data-i18n="title">BoB Demo</h1>
+        <p data-i18n="subtitle">Photo → price → item card → marketplace guide → reply</p>
+      </div>
+    </div>
+
+    <p class="demo-banner" data-i18n="banner">Interactive marketing-system demo. No real uploads leave this device, no live marketplace APIs, no payment. All figures and recommendations are sample / example data.</p>
+
+    <!-- 1. Photo -->
+    <section class="demo-panel">
+      <h2 data-i18n="s1_title">1. Photo of the item</h2>
+      <div class="bob-photo-zone">
+        <div class="bob-photo-preview" id="photo-preview" data-i18n="photo_empty">No photo yet</div>
+        <div class="bob-photo-actions">
+          <label class="demo-run" for="photo-file"><span data-i18n="upload">Upload / take photo</span></label>
+          <input type="file" id="photo-file" accept="image/*" capture="environment" />
+          <p class="demo-file-hint" data-i18n="or_sample">Or pick a sample item:</p>
+          <div class="demo-chips" id="sample-chips"></div>
+        </div>
+      </div>
+      <button type="button" class="demo-run" id="run-btn" data-i18n="run" disabled>Run BoB flow</button>
+    </section>
+
+    <!-- Steps -->
+    <section class="demo-panel" id="steps-panel">
+      <h2 data-i18n="steps_title">BoB is working…</h2>
+      <ol class="demo-steps" id="steps"></ol>
+    </section>
+
+    <!-- 2. Recognition -->
+    <section class="demo-panel demo-hidden" id="recog-panel">
+      <h2><span data-i18n="s2_title">2. Mock photo recognition</span> <span class="demo-example-tag" data-i18n="example">example</span></h2>
+      <div class="bob-recog" id="recog-body"></div>
+    </section>
+
+    <!-- 3. Price -->
+    <section class="demo-panel demo-hidden" id="price-panel">
+      <h2><span data-i18n="s3_title">3. Current price lookup</span> <span class="demo-example-tag" data-i18n="example">example</span></h2>
+      <div class="demo-price-box">
+        <div class="range" id="price-range"></div>
+        <p class="why" id="price-why"></p>
+      </div>
+      <div class="demo-table-wrap" style="margin-top:0.85rem">
+        <table class="demo-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_source">Sample source</th>
+              <th data-i18n="th_cond">Condition</th>
+              <th data-i18n="th_price">Price</th>
+            </tr>
+          </thead>
+          <tbody id="price-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. Item card -->
+    <section class="demo-panel demo-hidden" id="card-panel">
+      <h2><span data-i18n="s4_title">4. Item card</span> <span class="demo-example-tag" data-i18n="example">example</span></h2>
+      <div class="item-card" id="item-card"></div>
+    </section>
+
+    <!-- Inventory log -->
+    <section class="demo-panel demo-hidden" id="inv-panel">
+      <h2><span data-i18n="inv_title">Logged to mock inventory</span> <span class="demo-example-tag" data-i18n="example">example</span></h2>
+      <div class="demo-table-wrap">
+        <table class="demo-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_item">Item</th>
+              <th data-i18n="th_brand">Brand</th>
+              <th data-i18n="th_cond">Condition</th>
+              <th data-i18n="th_suggest">Suggested</th>
+            </tr>
+          </thead>
+          <tbody id="inv-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. Marketplace guide -->
+    <section class="demo-panel demo-hidden" id="mp-panel">
+      <h2><span data-i18n="s5_title">5. Marketplace guide</span> <span class="demo-example-tag" data-i18n="sample">sample</span></h2>
+      <p style="margin:0 0 0.85rem;color:var(--fg-muted);font-size:0.88rem" data-i18n="mp_lead">Which platform fits this item — example recommendations only.</p>
+      <div class="mp-grid" id="mp-grid"></div>
+    </section>
+
+    <!-- 6. Customer reply -->
+    <section class="demo-panel demo-hidden" id="reply-panel">
+      <h2><span data-i18n="s6_title">6. Drafted customer reply</span> <span class="demo-example-tag" data-i18n="example">example</span></h2>
+      <p style="margin:0 0 0.55rem;color:var(--fg-dim);font-size:0.8rem" data-i18n="reply_q">Sample buyer question: “Is this still available? Any scratches?”</p>
+      <div class="demo-reply" id="reply-body"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <picture>
+          <source srcset="/assets/logo.webp" type="image/webp" />
+          <img src="/assets/logo.jpg" alt="" width="28" height="28" />
+        </picture>
+        <span>Robot Kitchen</span>
+      </div>
+      <div class="footer-meta">
+        <a class="footer-link" href="https://robotkitchen.us">robotkitchen.us</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <span>© 2026 Robot Kitchen LLC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+(function () {
+  const SAMPLES = {
+    chair: {
+      emoji: "🪑",
+      en: {
+        name: "Ergonomic gaming chair",
+        brand: "Generic ProSeat",
+        condition: "Open box — unused, original packaging",
+        category: "Furniture / gaming",
+        blurb: "Open-box ergonomic gaming chair in original packaging. Adjustable lumbar support, recline, and PU leather. Ideal for WFH or streaming setups.",
+        priceLow: 129, priceHigh: 169, suggestSuggest: 149,
+        priceWhy: "Sample comps: new retail ~$199–229; open-box / return units often list $130–170. Suggested mid-open-box ask: $149 (example).",
+        sources: [
+          { src: "Retail MSRP (sample)", cond: "New", price: "$219" },
+          { src: "Online marketplace avg (sample)", cond: "Open box", price: "$145–165" },
+          { src: "Local pickup listings (sample)", cond: "Used good", price: "$90–120" }
+        ],
+        bestMp: "amazon",
+        reply: "Hi! Yes — still available. This is an open-box unit: unused, in the original box, with no scratches on the seat or armrests that we can see. Happy to send close-up photos of any angle you want. Local pickup or ship-in-box both work. Thanks!"
+      },
+      zh: {
+        name: "人體工學電競椅",
+        brand: "Generic ProSeat",
+        condition: "開箱未使用 · 原盒",
+        category: "家具／電競",
+        blurb: "開箱未使用的人體工學電競椅，附原盒。可調腰靠、仰躺、PU 皮面，適合居家辦公或直播。",
+        priceLow: 129, priceHigh: 169, priceSuggest: 149,
+        priceWhy: "範例比價：新品零售約 $199–229；開箱／退貨款常見 $130–170。建議開箱價 $149（範例）。",
+        sources: [
+          { src: "零售標價（範例）", cond: "新品", price: "$219" },
+          { src: "線上平台均價（範例）", cond: "開箱", price: "$145–165" },
+          { src: "本地自取刊登（範例）", cond: "二手良好", price: "$90–120" }
+        ],
+        bestMp: "amazon",
+        reply: "您好！還有貨。這是開箱未使用、附原盒的椅子，座墊與扶手目測無刮傷。需要的話我可以再傳各角度近照。可面交或原箱寄出，謝謝！"
+      }
+    },
+    sofa: {
+      emoji: "🛋️",
+      en: {
+        name: "2-seat loveseat sofa",
+        brand: "Amazon returns lot",
+        condition: "Customer return — lightly used, one cushion crease",
+        category: "Furniture / living room",
+        blurb: "Amazon-return 2-seat loveseat. Soft fabric, wood legs. Light crease on one cushion; frame solid. Best for local pickup — bulky shipping is costly.",
+        priceLow: 180, priceHigh: 260, priceSuggest: 220,
+        priceWhy: "Sample comps: new ~$399–499; return / scratch-and-dent often $180–280 locally. Suggested ask $220 (example).",
+        sources: [
+          { src: "Brand site MSRP (sample)", cond: "New", price: "$449" },
+          { src: "FB Marketplace nearby (sample)", cond: "Return / used", price: "$190–250" },
+          { src: "Outlet / scratch-dent (sample)", cond: "Damaged box", price: "$210–270" }
+        ],
+        bestMp: "facebook",
+        reply: "Hi! Yes it’s available. This is an Amazon customer-return loveseat — lightly used with a small crease on one cushion, otherwise clean. Best for local pickup (it’s bulky). I can meet evenings this week. Happy to share more photos!"
+      },
+      zh: {
+        name: "雙人小沙發",
+        brand: "Amazon 退貨批次",
+        condition: "顧客退貨 · 輕微使用 · 一側坐墊有壓痕",
+        category: "家具／客廳",
+        blurb: "Amazon 退貨雙人沙發，布面、木腳。一側坐墊有輕微壓痕，骨架穩固。體積大，建議本地面交。",
+        priceLow: 180, priceHigh: 260, priceSuggest: 220,
+        priceWhy: "範例比價：新品約 $399–499；退貨／微瑕本地常 $180–280。建議售價 $220（範例）。",
+        sources: [
+          { src: "品牌官網標價（範例）", cond: "新品", price: "$449" },
+          { src: "附近 FB Marketplace（範例）", cond: "退貨／二手", price: "$190–250" },
+          { src: "Outlet／微瑕（範例）", cond: "外箱損壞", price: "$210–270" }
+        ],
+        bestMp: "facebook",
+        reply: "您好！還在。這是 Amazon 顧客退貨的雙人沙發，輕微使用，一側坐墊有小壓痕，其餘乾淨。體積較大，建議面交。本週晚上可約，也可再傳照片，謝謝！"
+      }
+    },
+    lamp: {
+      emoji: "台灯",
+      en: {
+        name: "Mid-century table lamp",
+        brand: "No brand / vintage",
+        condition: "Used — good, original shade, light base scuffs",
+        category: "Home / vintage lighting",
+        blurb: "Vintage-style mid-century table lamp with original fabric shade. Working socket, light scuffs on the base. Great accent piece for a desk or nightstand.",
+        priceLow: 45, priceHigh: 75, priceSuggest: 58,
+        priceWhy: "Sample comps: similar vintage lamps on Etsy / eBay $40–80 depending on shade condition. Suggested $58 (example).",
+        sources: [
+          { src: "Etsy sold comps (sample)", cond: "Vintage good", price: "$48–72" },
+          { src: "eBay auction avg (sample)", cond: "Used", price: "$35–55" },
+          { src: "Local thrift ask (sample)", cond: "Used", price: "$25–40" }
+        ],
+        bestMp: "etsy",
+        reply: "Hello! Still available. The lamp works, original shade is intact, and there are only light scuffs on the metal base (happy to photo them). I can ship carefully packed or do local pickup. Thanks for asking!"
+      },
+      zh: {
+        name: "中世紀風格檯燈",
+        brand: "無品牌／復古",
+        condition: "二手良好 · 原燈罩 · 底座輕微磨痕",
+        category: "居家／復古燈飾",
+        blurb: "中世紀風格復古檯燈，附原布罩。插座正常，底座有輕微磨痕。適合書桌或床頭點綴。",
+        priceLow: 45, priceHigh: 75, priceSuggest: 58,
+        priceWhy: "範例比價：Etsy／eBay 類似復古燈約 $40–80（視燈罩狀況）。建議 $58（範例）。",
+        sources: [
+          { src: "Etsy 成交（範例）", cond: "復古良好", price: "$48–72" },
+          { src: "eBay 拍賣均價（範例）", cond: "二手", price: "$35–55" },
+          { src: "本地二手要價（範例）", cond: "二手", price: "$25–40" }
+        ],
+        bestMp: "etsy",
+        reply: "您好！還有。燈具正常、原燈罩完整，金屬底座僅有輕微磨痕（可再拍照）。可小心包裝寄出或面交，謝謝詢問！"
+      }
+    },
+    watch: {
+      emoji: "⌚",
+      en: {
+        name: "Digital sports watch",
+        brand: "RunTick",
+        condition: "Used — good, light band wear, box not included",
+        category: "Electronics / wearables",
+        blurb: "RunTick digital sports watch, used in good condition. Light wear on the strap, screen clear, no box. Solid daily beater with stopwatch and backlight.",
+        priceLow: 28, priceHigh: 42, priceSuggest: 35,
+        priceWhy: "Sample comps: new ~$59; used good without box often $25–40. Suggested $35 (example).",
+        sources: [
+          { src: "Brand store (sample)", cond: "New", price: "$59" },
+          { src: "eBay sold (sample)", cond: "Used good", price: "$28–40" },
+          { src: "Amazon renewed (sample)", cond: "Renewed", price: "$36–44" }
+        ],
+        bestMp: "ebay",
+        reply: "Hi there — yes, still for sale. Screen is clear, strap has light wear only, and the watch keeps time well. Box is not included. I can ship with tracking within 1 business day. Thanks!"
+      },
+      zh: {
+        name: "運動電子錶",
+        brand: "RunTick",
+        condition: "二手良好 · 錶帶輕微磨損 · 無原盒",
+        category: "電子／穿戴",
+        blurb: "RunTick 運動電子錶，二手良好。錶帶輕微磨損、螢幕清晰、無原盒。日常好用，含碼表與背光。",
+        priceLow: 28, priceHigh: 42, priceSuggest: 35,
+        priceWhy: "範例比價：新品約 $59；無盒二手良好常見 $25–40。建議 $35（範例）。",
+        sources: [
+          { src: "品牌商店（範例）", cond: "新品", price: "$59" },
+          { src: "eBay 成交（範例）", cond: "二手良好", price: "$28–40" },
+          { src: "Amazon Renewed（範例）", cond: "翻新", price: "$36–44" }
+        ],
+        bestMp: "ebay",
+        reply: "您好！還在賣。螢幕清晰、錶帶僅輕微磨損，走時正常。不含原盒。可於一個工作天內掛號寄出，謝謝！"
+      }
+    }
+  };
+
+  // Fix lamp emoji (avoid CJK in emoji field for EN)
+  SAMPLES.lamp.emoji = "💡";
+
+  const I18N = {
+    en: {
+      back: "← Back to home",
+      title: "BoB Demo",
+      subtitle: "Photo → price → item card → marketplace guide → reply",
+      banner: "Interactive marketing-system demo. No real uploads leave this device, no live marketplace APIs, no payment. All figures and recommendations are sample / example data.",
+      s1_title: "1. Photo of the item",
+      photo_empty: "No photo yet",
+      upload: "Upload / take photo",
+      or_sample: "Or pick a sample item:",
+      run: "Run BoB flow",
+      steps_title: "BoB is working…",
+      s2_title: "2. Mock photo recognition",
+      s3_title: "3. Current price lookup",
+      s4_title: "4. Item card",
+      inv_title: "Logged to mock inventory",
+      s5_title: "5. Marketplace guide",
+      s6_title: "6. Drafted customer reply",
+      example: "example",
+      sample: "sample",
+      th_source: "Sample source",
+      th_cond: "Condition",
+      th_price: "Price",
+      th_item: "Item",
+      th_brand: "Brand",
+      th_suggest: "Suggested",
+      mp_lead: "Which platform fits this item — example recommendations only.",
+      reply_q: "Sample buyer question: “Is this still available? Any scratches?”",
+      step1: "Reading photo / sample item",
+      step2: "Mock recognition (item, brand, condition)",
+      step3: "Looking up example market prices",
+      step4: "Building item card + inventory row",
+      step5: "Matching marketplaces + listing tips",
+      step6: "Drafting a customer reply",
+      recog_item: "Item",
+      recog_brand: "Brand",
+      recog_cond: "Condition",
+      recog_cat: "Category",
+      recog_note: "Recognition is simulated for this demo — not a real vision API.",
+      price_range: "Example range: ${l} – ${h}",
+      price_ask: "Suggested list price: ${s} (example)",
+      best_for: "Best fit (example)",
+      tip_label: "Listing tip",
+      samples: [
+        { id: "chair", label: "Gaming chair (open box)" },
+        { id: "sofa", label: "Amazon-return sofa" },
+        { id: "lamp", label: "Vintage table lamp" },
+        { id: "watch", label: "Used sports watch" }
+      ],
+      markets: {
+        amazon: {
+          name: "Amazon",
+          fit: "Branded new or open-box items with UPC / clear model — shippable, consistent condition.",
+          tip: "Use accurate condition notes (Open Box), original packaging photos, and competitive Buy Box–aware pricing."
+        },
+        ebay: {
+          name: "eBay",
+          fit: "Used, collectible, or auction-friendly items; good when comps and demand vary.",
+          tip: "Lead with clear defects in photos, set a realistic auction start or BIN, and mention shipping weight early."
+        },
+        etsy: {
+          name: "Etsy",
+          fit: "Handmade, vintage, or distinctive home décor with a story.",
+          tip: "Write a short origin/style story, tag vintage keywords, and show scale next to a common object."
+        },
+        facebook: {
+          name: "Facebook Marketplace",
+          fit: "Bulky furniture and local-only pickup — avoid expensive shipping.",
+          tip: "Post multiple angles, state pickup area and curb-side help, and price slightly under similar nearby listings."
+        }
+      }
+    },
+    zh: {
+      back: "← 返回首頁",
+      title: "BoB 試玩",
+      subtitle: "拍照 → 比價 → 商品卡 → 平台指南 → 客服回覆",
+      banner: "行銷系統概念互動演示。照片不會上傳離機、無真實平台 API、無付款。所有數字與建議皆為範例／樣本資料。",
+      s1_title: "1. 商品照片",
+      photo_empty: "尚未選擇照片",
+      upload: "上傳／拍照",
+      or_sample: "或選擇範例商品：",
+      run: "開始 BoB 流程",
+      steps_title: "BoB 處理中…",
+      s2_title: "2. 模擬影像辨識",
+      s3_title: "3. 市價查詢",
+      s4_title: "4. 商品卡",
+      inv_title: "已記入模擬庫存",
+      s5_title: "5. 銷售平台指南",
+      s6_title: "6. 草擬客服回覆",
+      example: "範例",
+      sample: "樣本",
+      th_source: "樣本來源",
+      th_cond: "狀況",
+      th_price: "價格",
+      th_item: "商品",
+      th_brand: "品牌",
+      th_suggest: "建議售價",
+      mp_lead: "哪個平台適合這件商品——僅為範例建議。",
+      reply_q: "範例買家提問：「還有嗎？有刮傷嗎？」",
+      step1: "讀取照片／範例商品",
+      step2: "模擬辨識（品名、品牌、狀況）",
+      step3: "查詢範例市價區間",
+      step4: "產生商品卡並記入庫存",
+      step5: "匹配平台與刊登提示",
+      step6: "草擬客服回覆",
+      recog_item: "品名",
+      recog_brand: "品牌",
+      recog_cond: "狀況",
+      recog_cat: "類別",
+      recog_note: "此演示的辨識為模擬，非真實影像 API。",
+      price_range: "範例區間：$ {l} – {h}",
+      price_ask: "建議售價：$ {s}（範例）",
+      best_for: "最合適（範例）",
+      tip_label: "刊登提示",
+      samples: [
+        { id: "chair", label: "電競椅（開箱）" },
+        { id: "sofa", label: "Amazon 退貨沙發" },
+        { id: "lamp", label: "復古檯燈" },
+        { id: "watch", label: "二手運動錶" }
+      ],
+      markets: {
+        amazon: {
+          name: "Amazon",
+          fit: "有品牌、新品或開箱、有型號／UPC、可寄送且狀況一致的商品。",
+          tip: "標註正確狀況（Open Box）、拍原包裝，並參考相近 Buy Box 定價。"
+        },
+        ebay: {
+          name: "eBay",
+          fit: "二手、收藏向或適合競標的商品；市價波動時很有用。",
+          tip: "瑕疵照放前面，設合理起標或一口價，並提早說明運費與重量。"
+        },
+        etsy: {
+          name: "Etsy",
+          fit: "手工、復古或有故事感的家居飾品。",
+          tip: "寫一小段風格／來歷，標 vintage 關鍵字，並放比例參照物。"
+        },
+        facebook: {
+          name: "Facebook Marketplace",
+          fit: "大型家具與僅限本地面交——避免昂貴運費。",
+          tip: "多角度照片、註明面交地區與是否協助搬運，價格略低於附近同類。"
+        }
+      }
+    }
+  };
+
+  let lang = "en";
+  let selectedId = null;
+  let customPhotoUrl = null;
+  let timer = null;
+  const inventory = [];
+
+  const $ = (s) => document.querySelector(s);
+  const t = () => I18N[lang];
+
+  function currentData() {
+    if (!selectedId || !SAMPLES[selectedId]) return null;
+    return Object.assign({ id: selectedId, emoji: SAMPLES[selectedId].emoji }, SAMPLES[selectedId][lang]);
+  }
+
+  function applyI18n() {
+    document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const k = el.getAttribute("data-i18n");
+      if (t()[k] != null) el.textContent = t()[k];
+    });
+    renderSamples();
+    renderStepsIdle();
+    if (!customPhotoUrl && !selectedId) {
+      $("#photo-preview").textContent = t().photo_empty;
+    }
+  }
+
+  function renderSamples() {
+    const host = $("#sample-chips");
+    host.innerHTML = "";
+    t().samples.forEach((s) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "demo-chip" + (s.id === selectedId && !customPhotoUrl ? " selected" : "");
+      b.textContent = s.label;
+      b.addEventListener("click", () => {
+        selectedId = s.id;
+        customPhotoUrl = null;
+        const prev = $("#photo-preview");
+        prev.innerHTML = "";
+        const span = document.createElement("div");
+        span.style.fontSize = "2.4rem";
+        span.textContent = SAMPLES[s.id].emoji;
+        const cap = document.createElement("div");
+        cap.style.marginTop = "0.25rem";
+        cap.style.fontSize = "0.7rem";
+        cap.textContent = s.label;
+        prev.appendChild(span);
+        prev.appendChild(cap);
+        $("#run-btn").disabled = false;
+        renderSamples();
+      });
+      host.appendChild(b);
+    });
+  }
+
+  function renderStepsIdle() {
+    const steps = [t().step1, t().step2, t().step3, t().step4, t().step5, t().step6];
+    const ol = $("#steps");
+    ol.innerHTML = "";
+    steps.forEach((s, i) => {
+      const li = document.createElement("li");
+      li.innerHTML = '<span class="demo-step-dot">' + (i + 1) + "</span><span>" + s + "</span>";
+      ol.appendChild(li);
+    });
+  }
+
+  function hideResults() {
+    ["recog-panel", "price-panel", "card-panel", "inv-panel", "mp-panel", "reply-panel"].forEach((id) => {
+      $("#" + id).classList.add("demo-hidden");
+    });
+  }
+
+  function guessFromUpload() {
+    // Uploaded photo → treat as gaming chair sample for the scripted demo
+    selectedId = selectedId || "chair";
+    if (!SAMPLES[selectedId]) selectedId = "chair";
+  }
+
+  $("#photo-file").addEventListener("change", (ev) => {
+    const file = ev.target.files && ev.target.files[0];
+    if (!file) return;
+    if (customPhotoUrl) URL.revokeObjectURL(customPhotoUrl);
+    customPhotoUrl = URL.createObjectURL(file);
+    selectedId = "chair";
+    const prev = $("#photo-preview");
+    prev.innerHTML = "";
+    const img = document.createElement("img");
+    img.src = customPhotoUrl;
+    img.alt = "Uploaded item";
+    prev.appendChild(img);
+    $("#run-btn").disabled = false;
+    renderSamples();
+  });
+
+  function runDemo() {
+    if (!selectedId) return;
+    if (timer) clearTimeout(timer);
+    hideResults();
+    const ol = $("#steps");
+    const lis = Array.from(ol.children);
+    lis.forEach((li) => { li.className = ""; });
+    $("#run-btn").disabled = true;
+
+    let i = 0;
+    function next() {
+      if (i > 0) lis[i - 1].classList.remove("on"), lis[i - 1].classList.add("done");
+      if (i < lis.length) {
+        lis[i].classList.add("on");
+        i += 1;
+        timer = setTimeout(next, 480);
+      } else {
+        showAll();
+        $("#run-btn").disabled = false;
+      }
+    }
+    next();
+  }
+
+  function showAll() {
+    const d = currentData();
+    if (!d) return;
+
+    // Recognition
+    const recog = $("#recog-body");
+    recog.innerHTML =
+      "<dl>" +
+      "<dt>" + t().recog_item + "</dt><dd>" + d.name + "</dd>" +
+      "<dt>" + t().recog_brand + "</dt><dd>" + d.brand + "</dd>" +
+      "<dt>" + t().recog_cond + "</dt><dd>" + d.condition + "</dd>" +
+      "<dt>" + t().recog_cat + "</dt><dd>" + d.category + "</dd>" +
+      "</dl><p style='margin:0.65rem 0 0;font-size:0.78rem;color:var(--fg-dim)'>" + t().recog_note + "</p>";
+    $("#recog-panel").classList.remove("demo-hidden");
+
+    // Price
+    $("#price-range").innerHTML =
+      t().price_range.replace("${l}", d.priceLow).replace("${h}", d.priceHigh).replace("{l}", d.priceLow).replace("{h}", d.priceHigh) +
+      "<br>" + t().price_ask.replace("${s}", d.priceSuggest).replace("{s}", d.priceSuggest);
+    $("#price-why").textContent = d.priceWhy;
+    const tb = $("#price-rows");
+    tb.innerHTML = "";
+    d.sources.forEach((row) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + row.src + "</td><td>" + row.cond + "</td><td>" + row.price + ' <span class="demo-example-tag">' + t().example + "</span></td>";
+      tb.appendChild(tr);
+    });
+    $("#price-panel").classList.remove("demo-hidden");
+
+    // Item card
+    const card = $("#item-card");
+    const photoHtml = customPhotoUrl
+      ? '<div class="ic-photo"><img src="' + customPhotoUrl + '" alt=""></div>'
+      : '<div class="ic-photo">' + d.emoji + "</div>";
+    card.innerHTML =
+      photoHtml +
+      "<div>" +
+      "<h3>" + d.name + "</h3>" +
+      '<p class="ic-meta">' + d.brand + " · " + d.condition + "</p>" +
+      '<div class="ic-price">$' + d.priceSuggest + ' <span class="demo-example-tag">' + t().example + "</span></div>" +
+      '<p class="ic-blurb">' + d.blurb + "</p>" +
+      "</div>";
+    $("#card-panel").classList.remove("demo-hidden");
+
+    // Inventory
+    inventory.unshift({
+      name: d.name,
+      brand: d.brand,
+      condition: d.condition,
+      suggest: "$" + d.priceSuggest
+    });
+    const inv = $("#inv-rows");
+    inv.innerHTML = "";
+    inventory.slice(0, 5).forEach((row) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + row.name + "</td><td>" + row.brand + "</td><td>" + row.condition + "</td><td>" + row.suggest + ' <span class="demo-example-tag">' + t().example + "</span></td>";
+      inv.appendChild(tr);
+    });
+    $("#inv-panel").classList.remove("demo-hidden");
+
+    // Marketplace guide
+    const order = ["amazon", "ebay", "etsy", "facebook"];
+    const grid = $("#mp-grid");
+    grid.innerHTML = "";
+    order.forEach((key) => {
+      const m = t().markets[key];
+      const div = document.createElement("div");
+      div.className = "mp-card" + (key === d.bestMp ? " best" : "");
+      div.innerHTML =
+        '<div class="mp-name">' + m.name +
+        (key === d.bestMp ? ' <span class="mp-badge">' + t().best_for + "</span>" : "") +
+        "</div>" +
+        '<p class="mp-fit">' + m.fit + "</p>" +
+        '<p class="mp-tip"><strong>' + t().tip_label + ":</strong> " + m.tip + "</p>";
+      grid.appendChild(div);
+    });
+    $("#mp-panel").classList.remove("demo-hidden");
+
+    // Reply
+    $("#reply-body").textContent = d.reply;
+    $("#reply-panel").classList.remove("demo-hidden");
+    $("#recog-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  document.querySelectorAll(".demo-lang button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      lang = btn.getAttribute("data-lang");
+      document.querySelectorAll(".demo-lang button").forEach((b) => b.classList.toggle("active", b === btn));
+      applyI18n();
+      hideResults();
+    });
+  });
+  $("#run-btn").addEventListener("click", () => {
+    if (customPhotoUrl) guessFromUpload();
+    runDemo();
+  });
+  applyI18n();
+})();
+  </script>
+</body>
+</html>

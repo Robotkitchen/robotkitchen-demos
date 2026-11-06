@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img">
+  <defs>
+    <linearGradient id="tank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a3048"/>
+      <stop offset="55%" stop-color="#061820"/>
+      <stop offset="100%" stop-color="#031018"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#0d9488" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#06141f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="128" height="128" fill="#06141f"/>
+  
+  <circle cx="64" cy="64" r="60" fill="#0a2a3a" stroke="#d4a84b" stroke-width="3"/>
+  <circle cx="64" cy="64" r="52" fill="url(#glow)"/>
+  
+  <g transform="translate(72,66) scale(0.85)">
+    <ellipse cx="0" cy="0" rx="38" ry="18" fill="#f43f5e"/>
+    <ellipse cx="18" cy="-2" rx="14" ry="10" fill="#f43f5e"/>
+    <circle cx="28" cy="-4" r="2.2" fill="#0f172a"/>
+    <circle cx="28.7" cy="-4.5" r="0.7" fill="#fff" opacity="0.85"/>
+    <!-- dorsal -->
+    <path d="M-10,-14 C0,-42 28,-38 34,-12 C18,-18 4,-20 -10,-14Z" fill="#fb7185" opacity="0.95"/>
+    <!-- caudal halfmoon -->
+    <path d="M-36,0 C-70,-36 -78,-8 -72,4 C-78,18 -68,38 -36,2 Z" fill="#fb7185"/>
+    <path d="M-40,-8 C-58,-28 -62,-6 -56,0 C-62,10 -56,26 -38,6" fill="#d4a84b" opacity="0.55"/>
+    <!-- ventral -->
+    <path d="M-6,12 C4,34 22,28 26,10 C12,16 2,14 -6,12Z" fill="#fb7185" opacity="0.9"/>
+    <!-- pectoral -->
+    <path d="M8,6 C18,18 26,10 18,2 Z" fill="#d4a84b" opacity="0.7"/>
+    <!-- gill mark -->
+    <path d="M10,-6 C14,0 12,8 8,6" fill="none" stroke="#d4a84b" stroke-width="1.4" opacity="0.7"/>
+  </g>
+  <path d="M28 92 Q64 78 100 92" fill="none" stroke="#5eead4" stroke-width="2" opacity="0.5"/>
+  <text x="64" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#d4a84b" letter-spacing="1">BDP</text>
+
+</svg>

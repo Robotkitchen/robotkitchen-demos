@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="WEAN Glass">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8D19A"/>
+      <stop offset="0.45" stop-color="#C9A457"/>
+      <stop offset="1" stop-color="#8A6828"/>
+    </linearGradient>
+    <radialGradient id="ovalFill" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#4A3568"/>
+      <stop offset="1" stop-color="#1A1028"/>
+    </radialGradient>
+    <clipPath id="panelClip">
+      <rect x="300" y="64" width="424" height="760" rx="4"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1024" height="1024" fill="#0B0B0C"/>
+
+  <!-- Tall door frame -->
+  <rect x="292" y="56" width="440" height="776" rx="8" fill="#141018" stroke="url(#gold)" stroke-width="12"/>
+
+  <!-- Stained glass mosaic -->
+  <g clip-path="url(#panelClip)" stroke="#C9A457" stroke-width="1.4" stroke-opacity="0.7">
+    <rect x="300" y="64" width="424" height="760" fill="#D5C6E4"/>
+    <!-- Row tiles -->
+    <polygon points="300,64 512,64 406,170" fill="#C8B8DC"/>
+    <polygon points="512,64 724,64 618,170" fill="#B5D9C6"/>
+    <polygon points="300,64 406,170 300,250" fill="#EBD4DC"/>
+    <polygon points="724,64 724,250 618,170" fill="#EBD4DC"/>
+    <polygon points="406,170 512,64 618,170 512,250" fill="#CFE6DA"/>
+    <polygon points="300,250 406,170 512,250 406,340" fill="#B8A4D4"/>
+    <polygon points="724,250 618,170 512,250 618,340" fill="#7DCFB6"/>
+    <polygon points="406,170 512,250 406,340" fill="#F2E0E6"/>
+    <polygon points="618,170 512,250 618,340" fill="#F2E0E6"/>
+    <polygon points="300,250 406,340 300,430" fill="#A8B87A"/>
+    <polygon points="724,250 618,340 724,430" fill="#B8A4D4"/>
+    <polygon points="406,340 512,250 618,340 512,430" fill="#C9B6DC"/>
+    <polygon points="300,430 406,340 512,430 406,512" fill="#7DCFB6"/>
+    <polygon points="724,430 618,340 512,430 618,512" fill="#E8B4C8"/>
+    <polygon points="406,340 512,430 406,512" fill="#E8DCC8"/>
+    <polygon points="618,340 512,430 618,512" fill="#D0E8DC"/>
+    <polygon points="300,430 406,512 300,594" fill="#E8B4C8"/>
+    <polygon points="724,430 618,512 724,594" fill="#A8B87A"/>
+    <polygon points="406,512 512,430 618,512 512,594" fill="#B5D9C6"/>
+    <polygon points="300,594 406,512 512,594 406,680" fill="#C8B8DC"/>
+    <polygon points="724,594 618,512 512,594 618,680" fill="#EBD4DC"/>
+    <polygon points="406,512 512,594 406,680" fill="#F5EEF5"/>
+    <polygon points="618,512 512,594 618,680" fill="#F5EEF5"/>
+    <polygon points="300,594 406,680 300,760" fill="#7DCFB6"/>
+    <polygon points="724,594 618,680 724,760" fill="#B8A4D4"/>
+    <polygon points="406,680 512,594 618,680 512,760" fill="#E8B4C8"/>
+    <polygon points="300,760 406,680 512,760 406,824" fill="#CFE6DA"/>
+    <polygon points="724,760 618,680 512,760 618,824" fill="#C8B8DC"/>
+    <polygon points="300,760 406,824 300,824" fill="#EBD4DC"/>
+    <polygon points="724,760 618,824 724,824" fill="#B5D9C6"/>
+    <polygon points="406,680 512,760 406,824" fill="#F2E0E6"/>
+    <polygon points="618,680 512,760 618,824" fill="#F2E0E6"/>
+    <polygon points="406,824 512,760 618,824" fill="#B8A4D4"/>
+    <g stroke="#C9A457" stroke-width="1.1" stroke-opacity="0.5" fill="none">
+      <line x1="512" y1="512" x2="300" y2="180"/>
+      <line x1="512" y1="512" x2="724" y2="180"/>
+      <line x1="512" y1="512" x2="300" y2="780"/>
+      <line x1="512" y1="512" x2="724" y2="780"/>
+      <line x1="512" y1="512" x2="360" y2="64"/>
+      <line x1="512" y1="512" x2="664" y2="64"/>
+      <line x1="512" y1="512" x2="360" y2="824"/>
+      <line x1="512" y1="512" x2="664" y2="824"/>
+    </g>
+  </g>
+
+  <!--
+    Geometry (tall rectangle monogram):
+    Diamond: DT(512,360) DR(620,512) DB(512,664) DL(404,512)
+    W from top: TL→DL, TC→DL, TC→DR, TR→DR
+    N from bottom (mirror): BL→DL, BC→DL, BC→DR, BR→DR
+    Plus X arms: TL→BR and TR→BL (through diamond corners)
+  -->
+  <g fill="none" stroke="url(#gold)" stroke-width="42" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Full X lattice (outer arms) -->
+    <path d="M 318 96 L 620 512 L 706 800"/>
+    <path d="M 706 96 L 404 512 L 318 800"/>
+    <!-- W center peak (from top-center down to L/R of diamond) -->
+    <path d="M 404 512 L 512 110 L 620 512"/>
+    <!-- N center peak (from bottom-center up to L/R of diamond) -->
+    <path d="M 404 512 L 512 814 L 620 512"/>
+  </g>
+
+  <!-- Soft highlight pass for thickness read -->
+  <g fill="none" stroke="#E8D19A" stroke-width="8" stroke-linecap="round" stroke-opacity="0.35">
+    <path d="M 318 96 L 620 512 L 706 800"/>
+    <path d="M 706 96 L 404 512 L 318 800"/>
+    <path d="M 404 512 L 512 110 L 620 512"/>
+    <path d="M 404 512 L 512 814 L 620 512"/>
+  </g>
+
+  <!-- Center diamond -->
+  <polygon points="512,372 608,512 512,652 416,512" fill="#B8A4D4" stroke="url(#gold)" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="512,372 560,442 512,512 464,442" fill="#7DCFB6"/>
+  <polygon points="560,442 608,512 560,582 512,512" fill="#E8B4C8"/>
+  <polygon points="512,512 560,582 512,652 464,582" fill="#9EAE82"/>
+  <polygon points="464,442 512,512 464,582 416,512" fill="#6BB8B0"/>
+  <line x1="512" y1="372" x2="512" y2="652" stroke="#C9A457" stroke-width="2.2" opacity="0.65"/>
+  <line x1="416" y1="512" x2="608" y2="512" stroke="#C9A457" stroke-width="2.2" opacity="0.65"/>
+
+  <!-- Purple oval + ea -->
+  <ellipse cx="512" cy="512" rx="74" ry="46" fill="url(#ovalFill)" stroke="url(#gold)" stroke-width="5.5"/>
+  <text x="512" y="524" text-anchor="middle"
+        font-family="Times New Roman, Times, DejaVu Serif, serif" font-style="italic" font-weight="700"
+        font-size="54" letter-spacing="1"
+        fill="#E2C9F0" stroke="#C9A457" stroke-width="2.2" paint-order="stroke fill">ea</text>
+
+  <!-- Classic serif wordmark -->
+  <text x="512" y="900" text-anchor="middle"
+        font-family="Times New Roman, Times, DejaVu Serif, serif" font-weight="600"
+        font-size="44" letter-spacing="28"
+        fill="url(#gold)">WEAN</text>
+  <line x1="424" y1="922" x2="600" y2="922" stroke="#C9A457" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

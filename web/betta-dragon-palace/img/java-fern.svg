@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img">
+  <defs>
+    <linearGradient id="tank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a3048"/>
+      <stop offset="100%" stop-color="#031018"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#16a34a" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#06141f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#tank)"/>
+  <ellipse cx="320" cy="220" rx="220" ry="150" fill="url(#glow)"/>
+  <path d="M320 360 L300 140 L340 140 Z" fill="#14532d"/><path d="M310 200 C250 160 220 220 260 260" fill="#15803d"/><path d="M330 180 C390 140 420 210 380 250" fill="#16a34a"/><path d="M320 220 C280 280 360 300 320 340" fill="#22c55e" opacity="0.7"/>
+  <text x="32" y="448" font-family="Georgia,serif" font-size="22" fill="#f5f0e8">Java Fern Cluster</text>
+</svg>
